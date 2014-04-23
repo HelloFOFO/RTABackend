@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="wucho" name="author" />
+    <title><%=proName%>-<%=modName%></title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/ui-lightness/jqueryui.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <style>
+        .add,.minus {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+<%include header%>
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+
+
+<div class="page-container">
+    <div class="row">
+
+     <%include modules%>
+        <div class="col-md-10">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" method="GET" id="queryForm">
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="orderID">订单号：</label>
+                        <div class="col-md-2">
+                            <input type="text" value="" id="orderID" name="orderID" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="liveName">联系人姓名：</label>
+                        <div class="col-md-2">
+                            <input type="text" value="" id="liveName" name="liveName" class="form-control">
+                        </div>
+                        <label class="control-label col-md-1" for="contactPhone">联系人手机：</label>
+                        <div class="col-md-2">
+                            <input type="text" id="contactPhone" name="contactPhone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="status">订单状态：</label>
+                        <div class="col-md-2">
+                            <select id="status" name="status" class="form-control" >
+                                <option value="">全部</option>
+                                <option value="1">已支付</option>
+                                <option value="0">未支付</option>
+                                <option value="2">已确认</option>
+                                <option value="3">已取消</option>
+                                <option value="4">已退款</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1 col-md-offset-1">
+                            <button id="query" class="btn btn-danger form-control" type="submit">查询</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-2"><button class="btn btn-primary" data-toggle="modal" data-target="#productOrder">新增订单</button></div>
+                </div>
+            </div>
+
+            <div class="row" id="queryResult">
+                <!--这一部分是分页栏 以及 表格栏-->
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+
+<div class="modal fade" id="productOrder" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">下单</h4>
+                </div>
+                <form role="form" class="form-horizontal" id="addForm">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >城市:</label>
+                            <div class="col-md-8 ">
+                                <select class="form-control" id="modalCity" name="modalCity">
+                                    <option value="">请选择城市</option>
+                                    <%cityInfo.forEach(function(obj){%>
+                                    <option value="<%=obj._id%>"><%=obj.name%></option>
+                                    <%});%>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div  class="form-group">
+                            <label class="col-md-3 control-label" >产品:</label>
+                            <div class="col-md-8">
+                                <select  class="form-control" id="modalProduct" name="modalProduct">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >产品名称:</label>
+                            <div class="col-md-8" >
+                                <input type="text" id="modalProductName" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group" id="modalAddressInfo">
+                            <label class="col-md-3 control-label" >地址:</label>
+                            <div class="col-md-8" >
+                                <input type="text" id="modalAddress" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group" id="ticketDateSelect">
+                            <label class="col-md-3 control-label" >有效期:</label>
+                            <div class="col-md-8">
+                                <select id="modalDateRange" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="modalIsWeekend">
+                            <label class="col-md-3 control-label" >类型:</label>
+                            <div class="col-md-8">
+                                <input type="radio" name="isWeekend"  value="false"> 平日票
+                                <input type="radio" name="isWeekend"  id="IsWeekend" value="true"> 周末票
+                                <span id="modalWeekendDef"></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group" id="hotelDateSelect">
+                            <label class="col-md-3 control-label" >入住离店:</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control date" id="modalHotelCheckInDate" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control date" id="modalHotelCheckOutDate" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group" id="packageDateSelect">
+                            <label class="col-md-3 control-label" >使用日期:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control date" id="modalPackageStartDate" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label  text-left" >单价:</label>
+                            <div class="col-md-8" >
+                                <input type="text" id="modalPrice" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label " >数量:</label>
+                            <div class="col-md-3 col-md-offset-2 input-group">
+                                <span class="input-group-addon minus">-</span>
+                                <input class="form-control" type="number" value="" id="modalQuantity" readonly>
+                                <span class="input-group-addon add">+</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >总金额:</label>
+                            <div class="col-md-8" >
+                                <input type="text" id="modalTotalPrice" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >联系人：</label>
+                            <div class="col-md-8" >
+                                <input type="text" id="modalPerson" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >联系电话：</label>
+                            <div class="col-md-8" >
+                                <input type="text" id="modalMobile" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >备注：</label>
+                            <div class="col-md-8" >
+                                <input type="text" id="modalRemark" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" data-loading-text="订单提交中...请稍候" id="submitOrder">确认购买</button>
+                    </div>
+                    <!-- hidden fields-->
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<div class="modal fade" id="productViewOrder" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">分销商订单</h4>
+            </div>
+            <form role="form" class="form-horizontal">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >城市:</label>
+                        <div class="col-md-8 ">
+                            <input type="text" id="modalViewCity" class="form-control" readonly value="">
+                        </div>
+                    </div>
+                    <div  class="form-group">
+                        <label class="col-md-3 control-label" >产品:</label>
+                        <div class="col-md-8">
+                            <input type="text" id="modalViewProductName" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >地址:</label>
+                        <div class="col-md-8" >
+                            <input type="text" id="modalViewAddress" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label class="col-md-3 control-label" >有效期:</label>
+                        <div class="col-md-8">
+                            <input type="text" id="modalViewUseDate" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="col-md-3 control-label  text-left" >单价:</label>-->
+                        <!--<div class="col-md-8" >-->
+                            <!--<input type="text" id="modalViewPrice" class="form-control" readonly>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label " >数量:</label>
+                        <div class="col-md-3 ">
+                            <input type="text" id="modalViewQuantity" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >总金额:</label>
+                        <div class="col-md-8" >
+                            <input type="text" id="modalViewTotalPrice" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >联系人：</label>
+                        <div class="col-md-8" >
+                            <input type="text" id="modalViewPerson" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >联系电话：</label>
+                        <div class="col-md-8" >
+                            <input type="text" id="modalViewMobile" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >备注：</label>
+                        <div class="col-md-8" >
+                            <textarea id="modalViewRemark" class="form-control" readonly rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+                <!-- hidden fields-->
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jqueryui.min.js"></script>
+<script src="../js/datepicker.language.js"></script>
+<script src="../js/underscore.min.js"></script>
+<script src="../js/ejs.js"></script>
+<script src="../js/common/orderInput.js"></script>
+<script src="../js/footer.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+
+    } );
+</script>
+
+</html>

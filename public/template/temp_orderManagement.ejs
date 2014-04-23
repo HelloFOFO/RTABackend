@@ -1,0 +1,43 @@
+<div class="col-md-12">
+    <ul class="pagination">
+        <li><a href="<%=pageInfo.urls.firstPage%>">首页</a></li>
+        <li class="<%=pageInfo.pages[20].class%>"><a href="<%=pageInfo.urls.prePage%>">上一页</a></li>
+        <li class="<%=pageInfo.pages[0].class%>"><a href="<%=pageInfo.urls.pageStr1%>"><%=pageInfo.pages[0].page%></a></li>
+        <li class="<%=pageInfo.pages[1].class%>"><a href="<%=pageInfo.urls.pageStr2%>"><%=pageInfo.pages[1].page%></a></li>
+        <li class="<%=pageInfo.pages[2].class%>"><a href="<%=pageInfo.urls.pageStr3%>"><%=pageInfo.pages[2].page%></a></li>
+        <li class="<%=pageInfo.pages[3].class%>"><a href="<%=pageInfo.urls.pageStr4%>"><%=pageInfo.pages[3].page%></a></li>
+        <li class="<%=pageInfo.pages[4].class%>"><a href="<%=pageInfo.urls.pageStr5%>"><%=pageInfo.pages[4].page%></a></li>
+        <li class="<%=pageInfo.pages[21].class%>"><a href="<%=pageInfo.urls.nextPage%>">下一页</a></li>
+        <li><a href="<%=pageInfo.urls.lastPage%>">末页</a></li>
+    </ul>
+    <table id="provider" class="table table-bordered"  width="100%">
+        <thead>
+        <tr>
+            <th>订单号</th>
+            <th>预定日期</th>
+            <th>类型</th>
+            <th>产品</th>
+            <th>使用日期</th>
+            <th>数量</th>
+            <th>总价</th>
+            <th>订单状态</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%data.forEach(function(obj){%>
+        <tr id="<%=obj._id%>">
+            <td> <%=obj.orderID%> </td>
+            <td> <%=obj.orderDate%> </td>
+            <td> <%=obj.product.type%> </td>
+            <td> <%=obj.product.name%> </td>
+            <td> <%=obj.useDate%> </td>
+            <td> <%=obj.quantity%> </td>
+            <td> <%=obj.totalPrice%> </td>
+            <td> <%=obj.status%> </td>
+            <td> <button class="btn btn-primary"><%=obj.opType%></button></td>
+        </tr>
+        <%});%>
+        </tbody>
+    </table>
+</div>

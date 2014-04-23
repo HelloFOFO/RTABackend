@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="wucho" name="author" />
+    <title><%=proName%>-<%=modName%></title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/ui-lightness/jqueryui.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <style>
+        .modal-dialog{
+            width: 800px;/* your width */
+        }
+        .productInfoBody{
+            border-bottom: 1px dashed #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+<%include header%>
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+
+
+<div class="page-container">
+    <div class="row">
+
+        <%include modules%>
+        <div class="col-md-10">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" method="GET" id="queryForm">
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="orderID">订单号：</label>
+                        <div class="col-md-2">
+                          <input type="text" value="" id="orderID" name="orderID" class="form-control">
+                        </div>
+                        <label class="control-label col-md-1" for="mobile">会员手机：</label>
+                        <div class="col-md-2">
+                            <input type="text" id="mobile" name="mobile" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="liveName">联系人姓名：</label>
+                        <div class="col-md-2">
+                            <input type="text" value="" id="liveName" name="liveName" class="form-control">
+                        </div>
+                        <label class="control-label col-md-1" for="contactPhone">联系人手机：</label>
+                        <div class="col-md-2">
+                            <input type="text" id="contactPhone" name="contactPhone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="status">订单状态：</label>
+                        <div class="col-md-2">
+                            <select id="status" name="status" class="form-control" >
+                                <option value="1">已支付</option>
+                                <option value="0">未支付</option>
+                                <option value="2">已确认</option>
+                                <option value="3">已取消</option>
+                                <option value="4">已退款</option>
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1 col-md-offset-1">
+                            <button id="query" class="btn btn-danger form-control" type="submit">查询</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row" id="queryResult">
+                <!--这一部分是分页栏 以及 表格栏-->
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+
+<div class="modal fade" id="productOrder" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">订单处理</h4>
+            </div>
+            <form role="form" class="form-horizontal" id="addForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >订单号：</label>
+                        <div class="col-md-3" >
+                            <input type="text" id="modalOrderID" class="form-control" readonly>
+                        </div>
+                        <label class="col-md-2 control-label" >预定时间：</label>
+                        <div class="col-md-3" >
+                            <input type="text" id="modalOrderDate" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >会员名：</label>
+                        <div class="col-md-3" >
+                            <input type="text" id="modalMemberName" class="form-control" readonly>
+                        </div>
+                        <label class="col-md-2 control-label" >会员手机：</label>
+                        <div class="col-md-3" >
+                            <input type="text" id="modalMemberMobile" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div id="modalProductInfo">
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >联系人：</label>
+                        <div class="col-md-8" >
+                            <input type="text" id="modalPerson" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >联系电话：</label>
+                        <div class="col-md-8" >
+                            <input type="text" id="modalMobile" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >客户备注：</label>
+                        <div class="col-md-8" >
+                            <input type="text" id="modalRemark" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group modalInvoiceInfo">
+                        <label class="col-md-3 control-label" >发票类型：</label>
+                        <div class="col-md-3" >
+                            <input type="text" id="modalInvoiceType" class="form-control" readonly>
+                        </div>
+                        <label class="col-md-2 control-label" >发票抬头：</label>
+                        <div class="col-md-3" >
+                            <input type="text" id="modalInvoiceTitle" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group modalInvoiceInfo">
+                        <label class="col-md-3 control-label" >邮寄地址：</label>
+                        <div class="col-md-3" >
+                            <input type="text" id="modalInvoiceAddr" class="form-control" readonly>
+                        </div>
+                        <label class="col-md-2 control-label" >发票号：</label>
+                        <div class="col-md-2" >
+                            <input type="text" id="modalInvoiceNum" class="form-control" readonly>
+                        </div>
+                        <div><button id="modalInvoiceStatus" class="btn btn-sm"></button></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >订单备注：</label>
+                        <div class="col-md-8" >
+                            <textarea id="modalOperatorRemark" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-loading-text="订单提交中...请稍候" id="updateOrder"></button>
+                </div>
+                <!-- hidden fields-->
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jqueryui.min.js"></script>
+<script src="../js/datepicker.language.js"></script>
+<script src="../js/underscore.min.js"></script>
+<script src="../js/common/orderManagement.js"></script>
+<script src="../js/ejs.js"></script>
+<script src="../js/footer.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+
+    } );
+</script>
+
+</html>

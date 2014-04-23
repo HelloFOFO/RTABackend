@@ -1,0 +1,57 @@
+<div class="col-md-12">
+    <ul class="pagination">
+        <li><a href="<%=pageInfo.urls.firstPage%>">首页</a></li>
+        <li class="<%=pageInfo.pages[20].class%>"><a href="<%=pageInfo.urls.prePage%>">上一页</a></li>
+        <li class="<%=pageInfo.pages[0].class%>"><a href="<%=pageInfo.urls.pageStr1%>"><%=pageInfo.pages[0].page%></a></li>
+        <li class="<%=pageInfo.pages[1].class%>"><a href="<%=pageInfo.urls.pageStr2%>"><%=pageInfo.pages[1].page%></a></li>
+        <li class="<%=pageInfo.pages[2].class%>"><a href="<%=pageInfo.urls.pageStr3%>"><%=pageInfo.pages[2].page%></a></li>
+        <li class="<%=pageInfo.pages[3].class%>"><a href="<%=pageInfo.urls.pageStr4%>"><%=pageInfo.pages[3].page%></a></li>
+        <li class="<%=pageInfo.pages[4].class%>"><a href="<%=pageInfo.urls.pageStr5%>"><%=pageInfo.pages[4].page%></a></li>
+        <li class="<%=pageInfo.pages[21].class%>"><a href="<%=pageInfo.urls.nextPage%>">下一页</a></li>
+        <li><a href="<%=pageInfo.urls.lastPage%>">末页</a></li>
+    </ul>
+
+    <table id="provider" class="myTable table table-bordered"  width="100%">
+        <thead>
+        <tr>
+            <th>发布企业</th>
+            <th>公告标题</th>
+            <th>发布时间</th>
+            <th>发布类型</th>
+            <th>状态</th>
+            <th>审核人</th>
+            <th>审核时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%data.forEach(function(obj){%>
+        <tr id="<%=obj._id%>">
+            <td><%=obj.provider.name%></td>
+            <td><%=obj.title%></td>
+            <td><%=new Date(obj.createTime).Format("yyyy-MM-dd hh:mm")%></td>
+            <td><%if(obj.type==0){%>政府公告<%}%></td>
+            <td><%if(obj.status==0){%>已拒绝<%}%><%if(obj.status==1){%>待审核<%}%><%if(obj.status==2){%>已上线<%}%><%if(obj.status==3){%>已下线<%}%></td>
+            <td><%if(obj.auditor){%>
+                <%=obj.auditor.name%>
+                <%}%></td>
+            <td><%if(obj.auditorTime){%>
+                <%=new Date(obj.auditorTime).Format("yyyy-MM-dd hh:mm")%>
+                <%}%>
+            </td>
+            <td>
+                <%if(obj.status==0){%>
+                <%}%>
+                <%if(obj.status==1){%>
+                <button class="btn btn-primary"  status="2">上线</button><button class="btn btn-danger" status="0">拒绝</button><%}%>
+                <%if(obj.status==2){%>
+                <button class="btn btn-danger"   status="3">下线</button><%}%>
+                <%if(obj.status==3){%>
+                <button class="btn btn-primary"  status="2">上线</button><%}%>
+            </td>
+
+        </tr>
+        <% })%>
+        </tbody>
+    </table>
+</div>
