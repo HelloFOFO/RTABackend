@@ -8,55 +8,44 @@ var http = require('http');
 var path = require('path');
 var log4js = require('log4js');
 var Conf = require("./tools/Config");
-var SessionStore = require("session-mongoose")(express);
+//var SessionStore = require("session-mongoose")(express);
+var RedisStore = require('connect-redis')(express);
+//var store = new SessionStore({
+//    url : "mongodb://"+Conf.inf.sessionHost+"/session",
+//    interval : 120000
+//});
 
-var store = new SessionStore({
-    url : "mongodb://"+Conf.inf.sessionHost+"/session",
-    interval : 120000
+var store = new RedisStore({
+            host: '172.16.0.15',
+            port: 6379,
+            db: 2,
+            pass: 'rtadd885'
 });
 
 //log4js config
-log4js.configure({
-    appenders : [ {
-        type : 'console'
-    }, {
-        type : 'file',
-        filename : 'logs/access.log',
-        maxLogSize : 1024,
-        backups : 4,
-        category : 'normal'
-    } ],
-    replaceConsole : true
-});
+log4js.configure({ appenders : [ { type : 'console' } ], replaceConsole : true });
 var logger = log4js.getLogger('normal');
 logger.setLevel('INFO');
 
 var app = express();
 // all environments
-app.set('port', "3000");
-app.set('views', path.join(__dirname, 'views'));
+app.set('port', "3456");
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 //app.use(express.favicon());
-
-app.use(express.bodyParser({
-    uploadDir : './uploads'
-}));
+app.use(express.bodyParser({ uploadDir : './uploads' }));
 
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({
     secret : 'rta',
     store : store,
-    cookie : {
-        maxAge : 90000000000
-    }
+    cookie : { maxAge : 1800000 }
 }));
 
 app.use(log4js.connectLogger(logger, {
     level : log4js.levels.INFO
 }));
-
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 

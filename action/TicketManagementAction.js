@@ -57,9 +57,18 @@ exports.list = function(req,res){
         var viewData = {};
         var http = new httpClient(opt);
         http.getReq(function(err,result){
-            viewData = result;
-            viewData.pageInfo  = Paging.getPageInfo(req.query,result.totalPage,productType+'Management/list',otherParams);
-            res.json(viewData);
+            if(!err && result.error==0){
+                result.data.forEach(function(d){
+                    if(d.isHot && d.isHot==true){
+                        d.name= '(*)'+d.name;
+                    }
+                });
+                viewData = result;
+                viewData.pageInfo  = Paging.getPageInfo(req.query,result.totalPage,productType+'Management/list',otherParams);
+                res.json(viewData);
+            }else{
+                res.json({error:1,errorMsg:err});
+            }
         });
     } catch(e){
         res.json({error:1,errorMsg: e.message});
@@ -91,16 +100,14 @@ exports.update = function(req,res){
     try{
         var params = req.body;
         var opt = {
-            hostname:Config.inf.host,
-            port:Config.inf.port
+             hostname:Config.inf.host
+            ,port:Config.inf.port
+            ,method:"POST"
         };
         opt.path = "/product/"+productType+"/update/"+req.params.id;
-        console.log(opt.path);
-        opt.method = "POST";
         var http = new httpClient(opt);
         params.effectDate = new Date(params.effectDate+timeZone).getTime();
         params.expiryDate = new Date(params.expiryDate+timeZone).getTime();
-        console.log('ticketManagement---update-params',params);
         http.postReq(params,function(err,response){
             res.json(response);
         });

@@ -168,7 +168,7 @@ module.exports = function(app){
     app.get('/orderManagement/detail',orderManagement.detail);
     app.post('/orderManagement/invoice/update/:orderID',orderManagement.updateInvoice);
 
-
+    app.all('*',function(req,res){res.redirect('errorPage');});
 
 
 

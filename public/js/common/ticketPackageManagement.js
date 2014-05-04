@@ -159,6 +159,7 @@ $(document).ready(function(){
 
                         //insert Data
                         $('#name').val(data.data.name);
+                        $('#isHot').prop('checked',data.data.isHot);
                         $('#content').val(data.data.content);
                         $('#intro').val(data.data.intro);
 //                        $('#imgPreview').empty();
@@ -212,6 +213,7 @@ $(document).ready(function(){
     var saveProduct = function(){
         var postData={};
         postData.name     = $('#name').val();
+        postData.isHot     = $('#isHot').prop('checked');
         postData.content  = $('#content').val();
         postData.intro       = $('#intro').val();
         postData.city        = $('#city option:selected').val();

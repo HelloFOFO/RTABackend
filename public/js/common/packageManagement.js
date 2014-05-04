@@ -139,6 +139,7 @@ $(document).ready(function(){
                         $('.hideWhenEdit').css('display','none');
                         //insert Data
                         $('#name').val(data.data.name);
+                        $('#isHot').prop('checked',data.data.isHot);
                         $('#content').val(data.data.content);
                         $('#intro').val(data.data.intro);
                         data.data.relatedProductID.forEach(function(d){
@@ -173,6 +174,7 @@ $(document).ready(function(){
     var saveProduct = function(){
         var postData={};
         postData.name     = $('#name').val();
+        postData.isHot     = $('#isHot').prop('checked');
         postData.content  = $('#content').val();
         postData.intro       = $('#intro').val();
         postData.city        = $('#city option:selected').val();

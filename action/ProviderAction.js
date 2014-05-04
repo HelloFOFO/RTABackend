@@ -60,6 +60,7 @@ exports.getProviderDetail = function(req,res){
         path:"/ent/provider/detail/"+req.body.id,
         method:"GET"
     };
+    console.log(opt);
     try{
         var http = new httpClient(opt);
         http.getReq(function(err,result){

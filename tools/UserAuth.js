@@ -1,7 +1,7 @@
 
 var Auth = function(){
     return function(req,res,next){
-        if(req.session.user){
+        if(req.session && req.session.user){
             res.locals.user={};
             res.locals.userModules = req.session.user.modules;
             res.locals.user.mobile=req.session.user.mobile;
@@ -18,7 +18,7 @@ var TitleConfig = function(){
       var Config = require('./Config');
       res.locals.proName = Config.inf.projectName;
        if(req.path=="/welcome"){
-           res.locals.modName="bbbddd";
+           res.locals.modName="";
        }else{
            if(req.session.user.titleInfo[req.path]){
                res.locals.modName = req.session.user.titleInfo[req.path].name;

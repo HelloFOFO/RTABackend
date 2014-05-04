@@ -55,9 +55,18 @@ exports.list = function(req,res){
     try{
         var http = new httpClient(opt);
         http.getReq(function(err,result){
-            viewData = result;
-            viewData.pageInfo  = Paging.getPageInfo(req.query,result.totalPage,'packageManagement/list',otherParams);
-            res.json(viewData);
+            if(!err && result.error==0){
+                result.data.forEach(function(d){
+                    if(d.isHot && d.isHot==true){
+                        d.name= '(*)'+d.name;
+                    }
+                });
+                viewData = result;
+                viewData.pageInfo  = Paging.getPageInfo(req.query,result.totalPage,productType+'Management/list',otherParams);
+                res.json(viewData);
+            }else{
+                res.json({error:1,errorMsg:err});
+            }
         });
     } catch(e){
         res.json({error:1,errorMsg: e.message});

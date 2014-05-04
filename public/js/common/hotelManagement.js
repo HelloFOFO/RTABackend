@@ -92,7 +92,6 @@ $(document).ready(function(){
                 cache:false
             }).done(function(data, textStatus){
                     if(data.error===0){
-
                         //insert Data
                         $('#name').val(data.data.name);
                         $('#content').val(data.data.content);

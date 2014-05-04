@@ -82,7 +82,9 @@ $(document).ready(function(){
                     $('#updateOrder').attr('status',"4");
 
                 }else if(orderStatus==0 || orderStatus==3 || orderStatus==4){
-                    //已取消  已退款
+                    //未支付 已取消  已退款
+
+                    console.log('test');
                     $('#updateOrder').hide();
                 }
                 if(!(data.data.isWeekend === undefined)){
@@ -129,7 +131,7 @@ $(document).ready(function(){
                    $('#modalInvoiceTitle').val(data.data.invoice.title);
                    $('#modalInvoiceAddr').val(data.data.invoice.address);
                    $('#modalInvoiceNum').val(data.data.invoice.num?data.data.invoice.num:"");
-                   if(data.data.invoice.status==0){
+                   if(data.data.invoice.status==0 ){
                         //未开
                         $('#modalInvoiceStatus').html('开票').removeClass('btn-danger').addClass('btn-primary');
                         $('#modalInvoiceNum').prop('readonly',false);

@@ -35,7 +35,7 @@ exports.login = function(request,response){
                 ,port:config.inf.port
                 ,method:'GET'
             };
-            console.log(member);
+//            console.log(member);
             //如果是内定的管理员，会无视权限管理，否则要判权限
             if(member.data.mobile==config.inf.adminMobile){
                 opt.path='/module/shortList';
