@@ -170,8 +170,4 @@ module.exports = function(app){
 
     app.all('*',function(req,res){res.redirect('errorPage');});
 
-
-
-    var testAction = require('../Action/TestAction');
-    app.get('/test',testAction.init);
 };

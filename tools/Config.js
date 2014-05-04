@@ -3,9 +3,8 @@
  */
 
 exports.inf = {
-    sessionHost:"172.16.0.15"
-    ,host:'172.16.0.15'
-    ,port:3333
+     host:process.env.APISERVER||'172.16.0.15'
+    ,port:process.env.APIPORT||3333
     ,pageSize:10
     ,projectName:'RTA后台管理--'
     ,adminMobile:'18616365242'

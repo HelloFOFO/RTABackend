@@ -25,7 +25,7 @@ db.members.save(a)
 
 var a={
     _id:ObjectId("533ca827857c17cc25f88f08")
-    ,name:'路骋网'
+    ,name:'万车游网'
     ,contactName:'管理员'
     ,contactEmail:'admin@justpayyou.com'
     ,contactPhone:'18616365242'

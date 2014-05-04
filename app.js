@@ -8,18 +8,13 @@ var http = require('http');
 var path = require('path');
 var log4js = require('log4js');
 var Conf = require("./tools/Config");
-//var SessionStore = require("session-mongoose")(express);
 var RedisStore = require('connect-redis')(express);
-//var store = new SessionStore({
-//    url : "mongodb://"+Conf.inf.sessionHost+"/session",
-//    interval : 120000
-//});
 
 var store = new RedisStore({
-            host: '172.16.0.15',
-            port: 6379,
+            host: process.env.REDISSEVER||'172.16.0.15',
+            port: process.env.REDISPORT||6379,
             db: 2,
-            pass: 'rtadd885'
+            pass: process.env.REDISPASS||'rtadd885'
 });
 
 //log4js config
@@ -29,7 +24,7 @@ logger.setLevel('INFO');
 
 var app = express();
 // all environments
-app.set('port', "3456");
+app.set('port', process.env.PORT||"3456");
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 //app.use(express.favicon());

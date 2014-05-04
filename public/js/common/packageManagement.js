@@ -287,4 +287,10 @@ $(document).ready(function(){
         e.preventDefault();
         refershDataSet("/"+productType+"Management/list",$('#queryForm').serialize());
     });
+
+    //产品预览
+    $('#showDetail').click(function(){
+        var productID = $('selectedId').val();
+        window.open('http://dd885.com/productDetail/'+productID);
+    });
 });
