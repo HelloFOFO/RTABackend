@@ -290,7 +290,11 @@ $(document).ready(function(){
 
     //产品预览
     $('#showDetail').click(function(){
-        var productID = $('selectedId').val();
-        window.open('http://dd885.com/productDetail/'+productID);
+        var productID = $('#selectedId').val();
+        if(productID!=""){
+            window.open('http://dd885.com/productDetail/'+productID);
+        }else{
+            alert("请先选择要预览的产品");
+        }
     });
 });
