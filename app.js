@@ -35,7 +35,7 @@ app.use(express.cookieParser());
 app.use(express.session({
     secret : 'rta',
     store : store,
-    cookie : { maxAge : 1800000 }
+    cookie : { maxAge : 180000000 }
 }));
 
 app.use(log4js.connectLogger(logger, {

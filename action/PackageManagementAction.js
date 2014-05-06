@@ -49,7 +49,6 @@ exports.list = function(req,res){
     };
     otherParams = querystring.stringify(otherParams);
     opt.path="/product/"+productType+"/list?page="+requestPage+'&'+otherParams;
-    console.log(opt.path);
     opt.method="GET";
     var viewData = {};
     try{

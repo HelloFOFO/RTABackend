@@ -19,12 +19,13 @@ HttpClient.prototype.getReq = function(cb) {
 		});
 		
 		res.on('end',function(){
+//            cb(null,JSON.parse(_data));
             var data={};
             try{
                 data=JSON.parse(_data);
                 cb(null,JSON.parse(_data));
             }catch(e){
-                data={error:1,errorMsg:_data.toString()};
+                data={error:1111111,errorMsg:_data.toString()+ e.message};
                 cb(null,data);
             }
 		});

@@ -156,6 +156,10 @@ db.pro.modules.save(a);
 var a={code:'orderInput',name:'分销商下单',cat:'订单管理',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:65}
 db.pro.modules.save(a);
 
+var a={code:'memberManagement',name:'会员资料管理',cat:'会员管理',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:74}
+db.pro.modules.save(a);
+
+
 
 
 var a ={ "_id" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" : "江苏" }

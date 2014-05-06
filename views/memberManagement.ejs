@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8" />
+    <meta content="width=device-width ,initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="wucho" name="author" />
+    <title></title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/ui-lightness/jqueryui.min.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <style>
+        #createModal .modal-dialog{
+            width:800px;
+        }
+    </style>
+</head>
+<body>
+
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+<%include header%>
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+<div class="page-container">
+    <div class="row">
+
+        <%include modules%>
+
+        <div class="col-md-10">
+            <div class="row">
+                <!--这一部分为查询栏-->
+                <div class="col-md-12">
+                    <form class="form-horizontal" role="form" method="GET" id="queryForm">
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="mobile">手机号：</label>
+                            <div class="col-md-2">
+                                <input type="text" id="mobile" name="mobile" class="form-control">
+                            </div>
+                            <label class="control-label col-md-1" for="name">客户姓名：</label>
+                            <div class="col-md-2">
+                                <input type="text" id="name" name="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="isEnable">是否有效：</label>
+                            <div class="col-md-2">
+                                <select id="isEnable" name="isEnable" class="form-control" >
+                                    <option value="">所有</option>
+                                    <option value="true">启用</option>
+                                    <option value="false">禁用</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1 col-md-offset-1">
+                                <button id="query" class="btn btn-danger form-control" type="submit">查询</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <!--这一部分是按钮栏-->
+                <div class="col-md-12">
+                    <button type="button" class="btn bg-primary" data-toggle="modal"  id="showEdit">查看客户信息</button>
+                </div>
+            </div>
+            <div class="row" id="queryResult">
+                <!--这一部分是分页栏 以及 表格栏-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+
+
+<div class="modal fade" id="createModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><span id="modalType"></span>客户资料查看</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="modalForm">
+                    <div class="form-group">
+                        <label for="Modalmobile" class="col-md-2 control-label">会员手机号</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="Modalmobile" name="Modalmobile" readonly>
+                        </div>
+                        <label for="Modalname" class="col-md-2 control-label">会员姓名</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="Modalname" name="Modalname" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ModalsiginUpDate" class="col-md-2 control-label">注册时间</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="ModalsiginUpDate" name="ModalsiginUpDate" readonly>
+                        </div>
+                        <label for="Modalcity" class="col-md-2 control-label">所在城市</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="Modalcity" name="Modalcity" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Modalgender" class="col-md-2 control-label">会员性别</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="Modalgender" name="Modalgender" readonly>
+                        </div>
+                        <label for="ModallisencePlate" class="col-md-2 control-label">车牌号</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="ModallisencePlate" name="ModallisencePlate" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Modalage" class="col-md-2 control-label">会员年龄</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="Modalage" name="Modalage" readonly>
+                        </div>
+                        <label for="Modalaccompany" class="col-md-2 control-label">同行对象</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="Modalaccompany" name="Modalaccompany" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ModallastDestCity" class="col-md-3 control-label">最近一次自驾游目的地</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="ModallastDestCity" name="ModallastDestCity" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ModalfavDestCity" class="col-md-3 control-label">最喜欢的自驾游目的地</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="ModalfavDestCity" name="ModalfavDestCity" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ModalintentCity" class="col-md-3 control-label">愿意再去的目的地</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="ModalintentCity" name="ModalintentCity" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ModalisEnable" class="col-md-2 control-label">是否有效</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="ModalisEnable" name="ModalisEnable" readonly>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+                <input type="hidden" id="selectedId" name="selectedId" value="">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jqueryui.min.js"></script>
+<script src="../js/datepicker.language.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/underscore.min.js"></script>
+<script src="./js/ejs.js"></script>
+<script src="./js/footer.js"></script>
+<script src="./js/common/memberManagement.js"></script>
+
+
+
+<script>
+    $(document).ready(function() {
+    } );
+</script>
+
+</html>
