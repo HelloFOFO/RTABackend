@@ -54,9 +54,9 @@ $(document).ready(function(){
             '<a id="__upyunFileName__" href="http://dd885.b0.upaiyun.com/__upyunFileName__">' +
             '<img src="http://dd885.b0.upaiyun.com/__upyunFileName__!preview" class="" alt="__srcFileName__">' +
             '</a>' +
-            '<div class="deleteBar">删除</div>'
+            '<div class="deleteBar">删除(__width__*__height__)</div>'
         '</li>';//__srcFileName__
-        str = str.replace(/__upyunFileName__/g,url).replace(/__srcFileName__/,intro);
+        str = str.replace(/__upyunFileName__/g,url).replace(/__srcFileName__/,intro).replace(/__width__/,imgObj.width).replace(/__height__/,imgObj.height);;
         $('#imgPreview').append(str);
     };
     //读取图片的逻辑
@@ -154,7 +154,7 @@ $(document).ready(function(){
         }).done(function(data){
                 if(data.error==0){
                     picName = (picName==""?data.srcFileName:picName);
-                    addImage({intro:picName,url:data.upyunFileName});
+                    addImage({intro:picName,url:data.upyunFileName,width:data.width,height:data.height});
                 }else{
                     console.log("上传失败！");
                     alert("上传失败！");
