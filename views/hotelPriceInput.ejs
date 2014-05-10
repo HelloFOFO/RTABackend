@@ -413,7 +413,7 @@
     });
     //set add end Date start and end
     $('#addEndDate').datetimepicker("setStartDate",formatDate(nowTime));
-//    nowTime.setFullYear(nowTime.getFullYear()+1);
+    nowTime.setFullYear(nowTime.getFullYear()+10);
     $('#addEndDate').datetimepicker("setEndDate",formatDate(nowTime));
     //set paginator
     refreshPaginator(<%=currentPage%>,<%=totalPage%>);
