@@ -24,7 +24,7 @@ logger.setLevel('INFO');
 
 var app = express();
 // all environments
-app.set('port', process.env.PORT||"3456");
+app.set('port', process.env.PORT||"3457");
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 //app.use(express.favicon());

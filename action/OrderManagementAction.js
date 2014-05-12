@@ -23,8 +23,8 @@ exports.init = function(req,res){
         };
         var httpCity = new httpClient(opt);
         httpCity.getReq(function(err,result){
-            if(err){
-                res.render('errorPage',{error:1,errorMsg: err});
+            if(err || result.error !=0 ){
+                res.render( 'errorPage' , { error:1 , errorMsg: err } );
             }else{
                 viewData.cityInfo = result.data;
                 res.render(template,viewData);

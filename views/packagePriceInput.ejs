@@ -38,28 +38,28 @@
                                 <%});%>
                             </select>
                         </div>
-                        <label class="control-label col-md-1" for="searchProduct">酒店：</label>
+                        <label class="control-label col-md-1" for="searchProduct">打包：</label>
                         <div class="col-md-2">
                             <input type="text" id="searchProduct" name="searchProduct" class="form-control">
                         </div>
                     </div>
                         <div class="form-group">
 
-                                <label class="control-label col-md-1" for="searchStartDate">有效期：</label>
+                            <label class="control-label col-md-1" for="searchStartDate">有效期：</label>
                             <div class="col-md-2">
-                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="sDate" data-link-format="yyyy-mm-dd" id="searchStartDate" name="searchStartDate">
-                                    <input class="form-control" type="text" value="" readonly>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                                </div>
+                                <!--<div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="sDate" data-link-format="yyyy-mm-dd" id="searchStartDate" name="searchStartDate">-->
+                                    <input id="searchStartDate" name="searchStartDate" class="form-control date" type="text" value="" readonly>
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>-->
+                                <!--</div>-->
                             </div>
                             <div class="col-md-1">~~</div>
                             <div class="col-md-2">
-                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="eDate" data-link-format="yyyy-mm-dd" id="searchEndDate" name="searchEndDate">
-                                    <input class="form-control" type="text" value="" readonly>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                                </div>
+                                <!--<div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="eDate" data-link-format="yyyy-mm-dd" id="searchEndDate" name="searchEndDate">-->
+                                    <input id="searchEndDate" name="searchEndDate" class="form-control date" type="text" value="" readonly>
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>-->
+                                <!--</div>-->
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">新增酒店价格记录</h4>
+                    <h4 class="modal-title">新增打包价格记录</h4>
                 </div>
                 <form role="form" class="form-horizontal" id="addForm">
                     <div class="modal-body">
@@ -230,19 +230,19 @@
 
                             <label class="control-label col-md-2" for="addStartDate">有效期</label>
                             <div class="col-md-5">
-                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="startDate" data-link-format="yyyy-mm-dd" id="addStartDate">
-                                    <input class="form-control" type="text" value="" readonly required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                                </div>
+                                <!--<div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="startDate" data-link-format="yyyy-mm-dd" id="addStartDate">-->
+                                    <input class="form-control date" type="text" value="" id="startDate" name="startDate" readonly>
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>-->
                             </div>
+                            <!--</div>-->
                             <div class="col-md-5">
-                                <div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="endDate" data-link-format="yyyy-mm-dd" id="addEndDate">
-                                    <input class="form-control" type="text" value="" readonly required>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                                </div>
+                                <!--<div class="input-group date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="endDate" data-link-format="yyyy-mm-dd" id="addEndDate">-->
+                                    <input class="form-control date" type="text" value="" id="endDate" name="endDate" readonly>
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>-->
                             </div>
+                            <!--</div>-->
                         </div>
 
                         <div class="form-group">
@@ -263,11 +263,14 @@
                             <div class="col-md-4"><input type="text" class="form-control" id="priceWeekend" name="priceWeekend" required></div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-2 control-label" for="packagePrice">打包价</label>
-                            <div class="col-md-4"><input type="text" class="form-control" id="packagePrice" name="packagePrice" required></div>
-                            <div class="col-md-4"><input type="text" class="form-control" id="packagePriceWeekend" name="packagePriceWeekend" required></div>
-                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-md-2 control-label" for="packagePrice">打包价</label>-->
+                            <!--<div class="col-md-4"><input type="text" class="form-control" id="packagePrice" name="packagePrice" required></div>-->
+                            <!--<div class="col-md-4"><input type="text" class="form-control" id="packagePriceWeekend" name="packagePriceWeekend" required></div>-->
+                        <!--</div>-->
+                        <!--打包价格在打包产品里不录了 -->
+                        <input type="hidden" id="packagePrice" name="packagePrice" value="10000">
+                        <input type="hidden" id="packagePriceWeekend" name="packagePriceWeekend" value="10000">
 
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="marketPrice">市场价</label>
@@ -281,7 +284,7 @@
                             <div class="col-md-3">
                                 <select class="form-control" id="inventoryType" name="inventoryType" required>
                                     <option value="0">单日</option>
-                                    <option value="1">总量</option>
+                                    <!--<option value="1">总量</option>-->
                                 </select>
                             </div>
                         </div>
@@ -336,8 +339,8 @@
                         <button type="submit" class="btn btn-primary" data-loading-text="保存中...请稍候" id="createVoture">保存</button>
                     </div>
                     <!-- hidden fields-->
-                    <input type="hidden" id="startDate" name="startDate" value="" />
-                    <input type="hidden" id="endDate" name="endDate" value="" />
+                    <!--<input type="hidden" id="startDate" name="startDate" value="" />-->
+                    <!--<input type="hidden" id="endDate" name="endDate" value="" />-->
                     <input type="hidden" id="uName" value=<%=user.mobile%> />
                     <input type="hidden" id="operator" name="operator" value=<%=user._id%> />
                 </form>
@@ -349,13 +352,15 @@
 
 
 <script src="../js/jquery.min.js"></script>
+<script src="../js/jqueryui.min.js"></script>
+<script src="../js/datepicker.language.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-switch.js"></script>
 <script src="../js/bootstrap-paginator.min.js"></script>
-<script src="../js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-<script src="../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-<script src="../js/jqueryui.min.js"></script>
-<script src="../js/common/hotelPriceInput.js"></script>
+<!--<script src="../js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>-->
+<!--<script src="../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>-->
+
+<script src="../js/common/packagePriceInput.js"></script>
 <script src="../js/footer.js"></script>
 <script src="../js/ejs.js"></script>
 
@@ -363,60 +368,67 @@
 <script>
     $(document).ready(function() {
         $('#isEnable').bootstrapSwitch();
+        $('.date').datepicker({
+            "dateFormat": 'yy-mm-dd'
+        } );
+//        var nowTime = new Date();
+        //search start Date
+//        $('#searchStartDate').datetimepicker({
+//            language:'zh-CN',
+//            weekStart: 0,
+//            todayBtn:  0,
+//            autoclose: 1,
+//            todayHighlight: 1,
+//            startView: 2,
+//            minView: 2,
+//            forceParse: 0
+//        });
+//        //search end Date
+//        $('#searchEndDate').datetimepicker({
+//            language:'zh-CN',
+//            weekStart: 0,
+//            todayBtn:  0,
+//            autoclose: 1,
+//            todayHighlight: 1,
+//            startView: 2,
+//            minView: 2,
+//            forceParse: 0
+//        });
+//
+//        //add start Date
+//        $('#addStartDate').datetimepicker({
+//            language:'zh-CN',
+//            weekStart: 0,
+//            todayBtn:  0,
+//            autoclose: 1,
+//            todayHighlight: 1,
+//            startView: 2,
+//            minView: 2,
+//            forceParse: 0
+//        });
+//
+//        $('#addStartDate').datetimepicker("setStartDate",formatDate(nowTime));
+//
+//        //add end Date
+//        $('#addEndDate').datetimepicker({
+//            language:'zh-CN',
+//            weekStart: 0,
+//            todayBtn:  0,
+//            autoclose: 1,
+//            todayHighlight: 1,
+//            startView: 2,
+//            minView: 2,
+//            forceParse: 0
+//        });
+//
+//        //set add end Date start and end
+//        $('#addEndDate').datetimepicker("setStartDate",formatDate(nowTime));
+////    nowTime.setFullYear(nowTime.getFullYear()+1);
+//        $('#addEndDate').datetimepicker("setEndDate",formatDate(nowTime));
+//        //set paginator
+        refreshPaginator(<%=currentPage%>,<%=totalPage%>);
     } );
-    var nowTime = new Date();
-    //search start Date
-    $('#searchStartDate').datetimepicker({
-        language:'zh-CN',
-        weekStart: 0,
-        todayBtn:  0,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-    //search end Date
-    $('#searchEndDate').datetimepicker({
-        language:'zh-CN',
-        weekStart: 0,
-        todayBtn:  0,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
 
-    //add start Date
-    $('#addStartDate').datetimepicker({
-        language:'zh-CN',
-        weekStart: 0,
-        todayBtn:  0,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-    $('#addStartDate').datetimepicker("setStartDate",formatDate(nowTime));
-    //add end Date
-    $('#addEndDate').datetimepicker({
-        language:'zh-CN',
-        weekStart: 0,
-        todayBtn:  0,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-    //set add end Date start and end
-    $('#addEndDate').datetimepicker("setStartDate",formatDate(nowTime));
-//    nowTime.setFullYear(nowTime.getFullYear()+1);
-    $('#addEndDate').datetimepicker("setEndDate",formatDate(nowTime));
-    //set paginator
-    refreshPaginator(<%=currentPage%>,<%=totalPage%>);
 </script>
 
 </html>

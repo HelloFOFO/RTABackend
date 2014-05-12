@@ -27,7 +27,7 @@ var weekendConvert = function(weekend){
     }
 };
 
-exports.viewHotelPriceInput = function(req,res){
+exports.init = function(req,res){
     var ret;
         async.waterfall([
             //get list
@@ -35,19 +35,20 @@ exports.viewHotelPriceInput = function(req,res){
                 var opt = {
                     hostname:config.inf.host,
                     port:config.inf.port,
-                    path:"/product/hotel/priceLog/list?page=0&status=1",
+                    path:"/product/package/priceLog/list?page=0&status=1",
                     method:"GET"
                 };
                 new httpClient(opt).getReq(function(err,result){
-                    if(result.error===0){
+                    if(!err && result.error===0){
                         ret = result;
                         ret.currentPage = 1;
                         if(result.totalPage===0){
                             ret.totalPage++;
                         }
-                        cb(err,result);
+                        cb(null,result);
                     }else{
-                        throw "error,pls contact admin!";
+                        console.error("get pricelog error",err,result);
+                        cb('get pricelog error',null);
                     }
 
                 });
@@ -61,11 +62,12 @@ exports.viewHotelPriceInput = function(req,res){
                     method:"GET"
                 };
                 new httpClient(opt).getReq(function(err,result){
-                    if(result.error===0){
+                    if(!err && result.error===0){
                         ret.providerNames = result.data;
-                        cb(err,result);
+                        cb(null,result);
                     }else{
-                        throw "error,pls contact admin!";
+                        console.error("get provider list error",opt.path,err,result);
+                        cb('get provider list error',null);
                     }
                 });
             },
@@ -78,11 +80,12 @@ exports.viewHotelPriceInput = function(req,res){
                     method:"GET"
                 };
                 new httpClient(opt).getReq(function(err,result){
-                    if(result.error===0){
+                    if(!err && result.error===0){
                         ret.operators = result.data;
-                        cb(err,result);
+                        cb(null,result);
                     }else{
-                        throw "error,pls contact admin!";
+                        console.error("get member list error",opt.path,err,result);
+                        cb('get member list error',null);
                     }
                 });
             },
@@ -95,73 +98,35 @@ exports.viewHotelPriceInput = function(req,res){
                     method:"GET"
                 };
                 new httpClient(opt).getReq(function(err,result){
-                    if(result.error===0){
+                    if( !err && result.error===0 ){
                         ret.citys = result.data;
                         ret.userModules = req.session.user.modules;
                         ret.user={};
                         ret.user.mobile=req.session.user.mobile;
                         ret.user._id=req.session.user._id;
-                        if("input"===req.params.category){
-                            res.render("hotelPriceInput",ret);
-                        }else{
-                            res.render("hotelPriceAudit",ret);
-                        }
-                        cb(err,result);
+                        cb(null,ret);
                     }else{
-                        throw "error,pls contact admin!";
+                        console.error("get city list error",opt.path,err,result);
+                        cb('get city list error',null);
                     }
 
                 });
             }
-        ],function(error,errMsg){
-            if(null!=error){
-                console.log(error+","+errMsg);
-            }
-        });
-};
-
-//autocompelete product name
-exports.getProductNames = function(req,res){
-    var params="?limit=10";
-    if(!underscore.isEmpty(req.query.name)){
-        params +="&name="+req.query.name.trim();
-    }
-    if(!underscore.isEmpty(req.query.city)){
-        params +="&city="+req.query.city;
-    }
-    var productType = "";
-    if(!underscore.isEmpty(req.params.productType)){
-        productType = req.params.productType;
-    }
-    var opt = {
-        hostname:config.inf.host,
-        port:config.inf.port,
-        path:"/product/"+productType+"/shortList"+params,
-        method:"GET"
-    };
-    try{
-        new httpClient(opt).getReq(function(err,result){
-            if(result.error===0){
-                var ret = [];
-                result.data.forEach(function(obj){
-                    var row = {};
-                    row.label = obj.name;
-                    row.value = obj._id;
-                    ret.push(row);
-                });
-                res.json(ret);
+        ],function(error,result){
+            if(error){
+                console.error('init price input error',error+","+result);
+                res.redirect('/errorPage');
             }else{
-                throw "error,pls contact admin!";
+                if("input"===req.params.category){
+                    res.render("packagePriceInput",result);
+                }else{
+                    res.render("packagePriceAudit",result);
+                }
             }
-
         });
-    } catch(e){
-        console.log(e.message);
-        res.json([]);
-    }
 };
 
-exports.addInputLog = function(req,res){
+exports.add = function(req,res){
     var params = req.body;
     params.startDate = new Date(params.startDate+timeZone).getTime();
     params.endDate = new Date(params.endDate+timeZone).getTime();
@@ -173,7 +138,7 @@ exports.addInputLog = function(req,res){
     var opt = {
         hostname:config.inf.host,
         port:config.inf.port,
-        path:"/product/hotel/price/create",
+        path:"/product/package/price/create",
         method:"POST"
     };
     try{
@@ -188,8 +153,7 @@ exports.addInputLog = function(req,res){
     }
 };
 
-
-exports.getHotelPriceLogList = function(req,res){
+exports.list = function(req,res){
     var params;
     var page = 0;
     if(req.body.current&&req.body.current>0){
@@ -219,10 +183,10 @@ exports.getHotelPriceLogList = function(req,res){
     var opt = {
         hostname:config.inf.host,
         port:config.inf.port,
-        path:"/product/hotel/priceLog/list?"+params,
+        path:"/product/package/priceLog/list?"+params,
         method:"GET"
     };
-
+    console.debug('package price list %s',opt.path);
     var ret = {};
     try{
         new httpClient(opt).getReq(function(err,result){

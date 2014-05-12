@@ -123,7 +123,8 @@ var a={code:'hotelPrice/input',name:'酒店价格录入',cat:'价格录入',isEn
 db.pro.modules.save(a);
 var a={code:'voturePrice/input',name:'优惠券价格录入',cat:'价格录入',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:24}
 db.pro.modules.save(a);
-
+var a={code:'packagePrice/input',name:'打包产品价格录入',cat:'价格录入',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:25}
+db.pro.modules.save(a);
 
 var a={code:'ticketPrice/audit',name:'门票价格审核',cat:'价格审核',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:31}
 db.pro.modules.save(a);
@@ -132,6 +133,8 @@ db.pro.modules.save(a);
 var a={code:'hotelPrice/audit',name:'酒店价格审核',cat:'价格审核',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:33}
 db.pro.modules.save(a);
 var a={code:'voturePrice/audit',name:'优惠券价格审核',cat:'价格审核',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:34}
+db.pro.modules.save(a);
+var a={code:'packagePrice/audit',name:'打包产品价格审核',cat:'价格审核',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:35}
 db.pro.modules.save(a);
 
 //var a={code:'ticketPriceQuery',name:'门票价格查询',cat:'价格查询',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:41}

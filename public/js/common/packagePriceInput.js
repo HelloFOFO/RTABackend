@@ -6,7 +6,7 @@ $('#query').click(function(event){
     $('#query').button("loading");
     $.ajax({
         type: "post",
-        url: "/hotelPriceInput/list",
+        url: "/packagePriceInput/list",
         cache:false,
 //            dataType:"json",
         data:{product:$('#productId').val(),startDate:$('#sDate').val(),endDate:$('#eDate').val(),operator:$('#searchOperator').val(),provider:$('#searchProvider').val(),status:$('#searchStatus').val()},
@@ -15,7 +15,7 @@ $('#query').click(function(event){
                 console.log(data);
                 alert("查询出错！");
             }else{
-                var html = new EJS({url:"../template/temp_hotelPriceInput.ejs"}).render(data);
+                var html = new EJS({url:"../template/temp_packagePriceInput.ejs"}).render(data);
                 $('#tblcontent').html(html);
                 refreshPaginator(data.data.currentPage,data.data.totalPage);
             }
@@ -36,7 +36,7 @@ $('#searchProduct').autocomplete({
     source:function(req,res){
         $.ajax({
             type: "get",
-            url: "/getProductNames/hotel/",
+            url: "/getProductNames/package/",
             cache:false,
 //            dataType:"json",
             data:{city:$('#searchCity').val(),name:req.term},
@@ -112,7 +112,7 @@ $('#addCity').change(function(){
     $('#product').html("");
     $.ajax({
         type: "get",
-        url: "/getProductNames/hotel/",
+        url: "/getProductNames/package/",
         cache:false,
 //            dataType:"json",
         data:{city:$('#addCity').val()},
@@ -157,7 +157,7 @@ $('#addForm').submit(function(event){
     }
     $.ajax({
         type: "post",
-        url: "/hotelPriceInput/add",
+        url: "/packagePriceInput/add",
         cache:false,
 //            dataType:"json",
         data:$('#addForm').serialize(),
@@ -204,19 +204,19 @@ function refreshPaginator(currentPage,totalPage){
         }
     };
     $('#pageDiv').bootstrapPaginator(opt);
-}
+};
 
 //refresh table and paginator
 function refreshTable(currentPage){
     //refresh table
     $.ajax({
         type: "post",
-        url: "/hotelPriceInput/list",
+        url: "/packagePriceInput/list",
         cache:false,
 //            dataType:"json",
         data:{current:currentPage,product:$('#productId').val(),startDate:$('#sDate').val(),endDate:$('#eDate').val(),operator:$('#searchOperator').val(),provider:$('#searchProvider').val(),status:$('#searchStatus').val()},
         success: function(data, textStatus){
-            var html = new EJS({url:"../template/temp_hotelPriceInput.ejs"}).render(data);
+            var html = new EJS({url:"../template/temp_packagePriceInput.ejs"}).render(data);
             $('#tblcontent').html(html);
             refreshPaginator(data.currentPage,data.totalPage);
         },
@@ -228,9 +228,9 @@ function refreshTable(currentPage){
             alert("网络异常，请重试！");
         }
     });
-}
+};
 
 //format date to yyyy-MM-dd
 function formatDate(time){
     return time.getFullYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
-}
+};

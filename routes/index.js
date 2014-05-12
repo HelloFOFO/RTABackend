@@ -11,6 +11,9 @@ var MemberAction = require('./../action/MemberAction');
 var HotelPriceInputAction = require('./../action/HotelPriceInputAction');
 var TicketPriceInputAction = require('./../action/TicketPriceInputAction');
 var VoturePriceInputAction = require('./../action/VoturePriceInputAction');
+
+var PackagePriceInputAction = require("./../action/PackagePriceInputAction");
+
 var TicketPackagePriceInputAction = require('./../action/TicketPackagePriceInputAction');
 var PriceAuditAction = require('./../action/PriceAuditAction');
 //wuchong Part
@@ -32,6 +35,7 @@ var rightsManagementAction       = require('./../action/RightsManagementAction')
 var orderInputAction       = require('./../action/OrderInputAction');
 var orderManagement = require('./../action/OrderManagementAction');
 var memberManagement = require("./../action/MemberManagementAction");
+
 var UserAuth = require("./../tools/UserAuth");
 
 
@@ -92,6 +96,13 @@ module.exports = function(app){
     app.get('/ticketPackagePrice/:category',TicketPackagePriceInputAction.viewTicketPackagePriceInput);
     app.post('/ticketPackagePriceInput/list',TicketPackagePriceInputAction.getTicketPackagePriceLogList);
     app.post('/ticketPackagePriceInput/add',TicketPackagePriceInputAction.addInputLog);
+
+    //package price input
+    app.get('/packagePrice/:category',PackagePriceInputAction.init);
+    app.post('/packagePriceInput/list',PackagePriceInputAction.list);
+    app.post('/packagePriceInput/add',PackagePriceInputAction.add);
+
+
     //price audit
     app.post('/priceAudit/:type',PriceAuditAction.updateStatus);
     //file upload
