@@ -57,9 +57,37 @@ $(document).ready(function(){
             .replace(/__COST__/,cost);
         return productStr;
     };
+    //修改订单状态
+    var updateOrder = function(status,orderID,opRemark){
+        var data={
+            status:status
+            ,opRemark:opRemark
+        };
+        $.ajax({
+            url:"/orderInput/update/"+orderID
+            ,method:"POST"
+            ,data:data
+        }).done(function(data){
+                if(data.error==0){
+                    return true;
+                }else{
+                    console.log(data);
+                    return false;
+                }
+            }).fail(function(data){
+                console.log(data);
+                return false;
+            });
+    };
 
     $('#queryResult').on('click','button',function(){
         var orderID = $(this).parent().parent().attr('id');
+        if($(this).html().trim()=="取消"){
+            console.log('do cancel order');
+            updateOrder(3,orderID,"手动取消");
+            refershDataSet("/"+productType+"Management/list",$('#queryForm').serialize());
+            return;
+        }
         $.ajax({
              url:'/orderManagement/detail'
             ,data:{orderID:orderID}
@@ -147,33 +175,14 @@ $(document).ready(function(){
             });
     });
 
+
+
+//订单确认页中的订单确认
     $('#updateOrder').click(function(){
         var status   = $('#updateOrder').attr('status');
         var orderID  = $('#updateOrder').attr('order_id');
         var opRemark = $('#modalOperatorRemark').val();
-        var data={
-             status:status
-            ,opRemark:opRemark
-        };
-        $.ajax({
-               url:"/orderInput/update/"+orderID
-              ,method:"POST"
-              ,data:data
-        }).done(function(data){
-            if(data.error==0){
-                location.reload();
-            }else{
-                alert("无法操作，请联系管理员！"+data.errorMsg);
-                console.log(data);
-            }
-            }).fail(function(data){
-                alert("无法操作，请联系管理员！"+data.errorMsg);
-                console.log(data);
-            });
-    });
-
-    $('#query').click(function(e){
-        e.preventDefault();
+        updateOrder(status,orderID,opRemark);
         refershDataSet("/"+productType+"Management/list",$('#queryForm').serialize());
     });
 
@@ -222,5 +231,10 @@ $(document).ready(function(){
         e.preventDefault();
     });
 
+    //点击查询按钮的动作
+    $('#query').click(function(e){
+        e.preventDefault();
+        refershDataSet("/"+productType+"Management/list",$('#queryForm').serialize());
+    });
 
 });

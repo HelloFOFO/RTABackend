@@ -228,9 +228,9 @@ $(document).ready(function(){
             ,method:"POST"
             ,data:params
         }).done(function(data){
-                return data;
+                window.location.reload();
             });
-    }
+    };
 
     $('#modalCity').change(function(){
         var cityID = $(this).val();
@@ -480,7 +480,7 @@ $(document).ready(function(){
                 alert("请选择有效的出行日期！");
                 return;
             }
-            var param = {
+            var params = {
                  product:product
                 ,productType:productType
                 ,startDate:startDate
@@ -492,7 +492,6 @@ $(document).ready(function(){
             };
             saveOrder(params);
         }
-//        console.log($('[type=radio]:checked').val());
     });
 
 
@@ -549,6 +548,8 @@ $(document).ready(function(){
         var orderID = $(this).parent().parent().attr('id');
         if(status==1){
             //进行支付
+            var oid = $(this).parent().parent().find('td').first().text().trim();
+            window.open('/alipay/reqTrade/'+orderID+'/'+oid);
         }else if(status==3){
             //进行取消
             updateOrderStatus(orderID,status);

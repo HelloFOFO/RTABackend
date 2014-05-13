@@ -35,7 +35,7 @@
             <td> <%=obj.quantity%> </td>
             <td> <%=obj.totalPrice%> </td>
             <td> <%=obj.status%> </td>
-            <td> <button class="btn btn-primary"><%=obj.opType%></button></td>
+            <td> <button class="btn btn-primary"><%=obj.opType%></button> <%if(obj.status=="未支付"){%><button class="btn btn-danger">取消</button><%}%></td>
         </tr>
         <%});%>
         </tbody>

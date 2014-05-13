@@ -1,42 +1,32 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/jqueryui.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/ui-lightness/jqueryui.min.css" rel="stylesheet">
-
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=834dce0a001381125446e81e71cb7420"></script>
+    <title></title>
 </head>
-
 <body>
-<button id="b">bbb</button>
-
-<div class="row">
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-6">
-      <input type="text" id="fuck">
-    </div>
-</div>
-
+<div id="allmap" style="width: 800px;height: 600px;"></div>
+<div id="allmap2" style="width: 800px;height: 600px;"></div>
+<a href="javascript:showMap('allmap',121,31)">地图1</a>
+<a href="javascript:showMap('allmap2',121,32)">地图2</a>
 </body>
-<script>
-    $(document).ready(function(){
-        $('#fuck').autocomplete({
-            source: ['dfd','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf','dfdf']
-        });
-    })
-</script>
-
 </html>
-
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");            // 创建Map实例
+    var point = new BMap.Point(116.404, 39.915);    // 创建点坐标
+    map.centerAndZoom(point,15);                     // 初始化地图,设置中心点坐标和地图级别。
+    map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+<!---->
+    var showMap = function(marker,lat,lon){
+        var map = new BMap.Map(marker);
+        var point = new BMap.Point(lat,lon);
+        map.centerAndZoom(point,15);
+        map.enableScrollWheelZoom();
+        map.panTo(point);
+        var marker = new BMap.Marker(point);
+        map.addOverlay(marker);
+    };
+</script>

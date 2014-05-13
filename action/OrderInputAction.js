@@ -16,7 +16,7 @@ var getProductListByCity = function(city,cb){
          hostname:Config.inf.host
         ,port:Config.inf.port
         ,method:"GET"
-        ,path:'/web/product/webList/'+city
+        ,path:'/product/agentList/'+city
     };
     var http = new httpClient(opt);
     http.getReq(function(err,result){
@@ -149,16 +149,21 @@ exports.saveOrder = function(req,res){
             ,path:'/order/save'
         };
         var params      = req.body;
+        if(params.endDate){
+            params.endDate = new Date(params.endDate + timeZone).getTime();
+        }
+        params.startDate = new Date(params.startDate + timeZone).getTime();
         params.member   = req.session.user._id;
         params.source   = "534de2d55c5cc4b51f4e189d";
         params.operator = req.session.user._id;
         console.log(params);
         var http = new httpClient(opt);
+        console.debug('/order/save',params);
         http.postReq(params,function(error,data){
            if(error){
                res.json({error:1,errorMsg:error});
            }else{
-               res.json(data);
+               res.json({error:0});
            }
         });
     }catch(e){
@@ -262,7 +267,8 @@ exports.update = function(req,res){
                 ,method:"POST"
                 ,path:'/order/update/'+orderID
             };
-            var params=req.body;
+            var params       = req.body;
+            params.operator = req.session.user._id;
             var http = new httpClient(opt);
             http.postReq(params,function(error,data){
                if(error){

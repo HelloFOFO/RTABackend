@@ -11,6 +11,7 @@ var MemberAction = require('./../action/MemberAction');
 var HotelPriceInputAction = require('./../action/HotelPriceInputAction');
 var TicketPriceInputAction = require('./../action/TicketPriceInputAction');
 var VoturePriceInputAction = require('./../action/VoturePriceInputAction');
+var AlipayWebAction = require('./../action/AlipayWebAction');
 
 var PackagePriceInputAction = require("./../action/PackagePriceInputAction");
 
@@ -42,6 +43,10 @@ var UserAuth = require("./../tools/UserAuth");
 module.exports = function(app){
 
     app.get('/',function(request,response){response.render("index",{});});
+
+    app.get('/errorPage',function(req,res){
+        res.render('errorPage',{errorMsg:""});
+    });
 
     app.post('/login',MemberAction.login);
 
@@ -185,6 +190,14 @@ module.exports = function(app){
     app.get('/memberManagement/list',memberManagement.list);
     app.get('/memberManagement/detail/:id',memberManagement.detail);
 
-    app.all('*',function(req,res){res.redirect('errorPage');});
+   //alipay
+    //alipay for web
+    app.get('/alipay/reqTrade/:_id/:oid',AlipayWebAction.getReqTrade);
+    app.post('/alipay/notify/:id',AlipayWebAction.notify);
+    app.get('/alipay/callback/:id',AlipayWebAction.callBack);
+
+    app.all('*',function(req,res){
+        res.redirect('/errorPage');
+    });
 
 };

@@ -16,18 +16,11 @@ exports.errorPage= {
 };
 
 
-exports.wx = {
-    appID:"wx190214d55eec21df",
-    appsecret:"74ed5cffe3f1bf576d0d3fc9cab2d370",
-    wxhost : "api.weixin.qq.com",
-    wxport : 443
-};
-
 exports.alipay = {
-    partner : "",
-    seller : "",
+    partner : "2088601326477978",
+    seller : "hj_ct@126.com",
     sign_type : "MD5",
-    key : "",
+    key : process.env.ALIPAYKEY,
     input_charset : "utf-8",
     format : "xml",
     v : "2.0",
@@ -35,11 +28,14 @@ exports.alipay = {
     port : 80,
     path : "/service/rest.htm?",
     https_verify_url : "mapi.alipay.com",
-    https_verify_path : "/gateway.do?service=notify_verify&",
+    https_verify_path : "/gateway.do?",
     https_port : 443,
-    notify_url : "",
-    call_back_url : "",
     merchant_url : "",
-    authSrv : "alipay.wap.trade.create.direct",
-    tradSrv : "alipay.wap.auth.authAndExecute"
+    dirctSrv : "create_direct_pay_by_user",
+    payment_type : "1",
+//    direct_notify_url : "http://sh.dd885.com/web/notify",
+//    direct_return_url : "http://sh.dd885.com/web/callback"
+    //Test
+    direct_notify_url : process.env.ALIPAY_WEB_NOTIFY||"http://cloud.bingdian.com/alipay/notify/",
+    direct_return_url : process.env.ALIPAY_WEB_CALLBACK||"http://cloud.bingdian.com/alipay/callback/"
 };
