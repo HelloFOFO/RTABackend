@@ -177,7 +177,7 @@ $(document).ready(function(){
         postData.cancelRule  =$('#cancelRule').val();
         postData.transportation =$('#transportation').val();
         postData.effectDate     =  $('#effectDate').val();
-        postData.expiryDate      = $('#effectDate').val();
+        postData.expiryDate      = $('#expiryDate').val();
         postData.isEnable           = $('#isEnable').bootstrapSwitch('state').toString();
         postData.contactName        =$('#contactName').val();
         postData.tel                =$('#tel').val();

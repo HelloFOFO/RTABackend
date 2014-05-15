@@ -74,7 +74,7 @@ var a = {
     "liveName" : "dfsdf",
     "member" : ObjectId("5365d83f0cae76019c9b8ca7"),
     "orderDate" : 1399876849730,
-    "orderID" : "100114",
+    "orderID" : "100115",
     "payWay" : "1",
     "product" : ObjectId("5368a0afe51d1c367163f33c"),
     "quantity" : 1,
@@ -86,6 +86,6 @@ var a = {
         ObjectId("53706cf1df6a3fd3123e644c")
     ],
     "totalPrice" : 123,
-    transID : "1218852001201405143161403859"
+    transID : "1218852001201405143208952556"
 };
 db.orders.save(a);
