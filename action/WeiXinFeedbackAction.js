@@ -72,6 +72,7 @@ exports.update = function(req,res){
         var http = new httpClient(opt);
         http.postReq({msgType:msgType},function(err,result){
             if( err || result.error != 0 ){
+                console.error('weixin feedback action update',err,result);
                 cb('update failed',null);
             }else{
                 cb(null,null);
