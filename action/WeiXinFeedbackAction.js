@@ -56,13 +56,13 @@ exports.update = function(req,res){
         var http = new httpClient(opt);
         http.getReq(function(err,result){
             if(err || result.error !=0){
-                console.error('WeiXinFeedBackAction.update failed',result,err);
+                console.error('WeiXinFeedBackAction.update failed',result,err,opt.hostname,opt.port);
                 cb('weixin side rejected!',null);
             }else{
                 cb(null,null);
             }
         });
-    },function(cb,result){
+    },function(result,cb){
         var opt = {
             hostname:config.inf.host,
             port:config.inf.port,

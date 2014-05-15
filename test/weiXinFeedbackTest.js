@@ -59,3 +59,33 @@ var a={
 }
 //以上最好通过接口创建数据，否则无法获取订单号
 
+
+
+
+
+
+
+
+
+var a = {
+    "__v" : 0,
+    "_id" : ObjectId("53706cf1df6a3fd3123e644d"),
+    "contactPhone" : "11111111111",
+    "liveName" : "dfsdf",
+    "member" : ObjectId("5365d83f0cae76019c9b8ca7"),
+    "orderDate" : 1399876849730,
+    "orderID" : "100114",
+    "payWay" : "1",
+    "product" : ObjectId("5368a0afe51d1c367163f33c"),
+    "quantity" : 1,
+    "remark" : "",
+    "source" : ObjectId("534de2e3309199c11f233cf4"),
+    "startDate" : 1400083200000,
+    "status" : 1,
+    "subOrder" : [
+        ObjectId("53706cf1df6a3fd3123e644c")
+    ],
+    "totalPrice" : 123,
+    transID : "1218852001201405143161403859"
+};
+db.orders.save(a);
