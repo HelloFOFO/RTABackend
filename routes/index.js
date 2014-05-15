@@ -36,6 +36,7 @@ var rightsManagementAction       = require('./../action/RightsManagementAction')
 var orderInputAction       = require('./../action/OrderInputAction');
 var orderManagement = require('./../action/OrderManagementAction');
 var memberManagement = require("./../action/MemberManagementAction");
+var weiXinFeedbackManagement = require("./../action/WeiXinFeedbackAction");
 
 var UserAuth = require("./../tools/UserAuth");
 
@@ -185,10 +186,17 @@ module.exports = function(app){
     app.get('/orderManagement/list',orderManagement.list);
     app.get('/orderManagement/detail',orderManagement.detail);
     app.post('/orderManagement/invoice/update/:orderID',orderManagement.updateInvoice);
+    app.get('/orderManagement/export/:product',orderManagement.orderExport);
 
     app.get('/memberManagement',memberManagement.init);
     app.get('/memberManagement/list',memberManagement.list);
     app.get('/memberManagement/detail/:id',memberManagement.detail);
+
+    //weixin feedback
+    app.get('/weiXinFeedbackManagement',weiXinFeedbackManagement.init);
+    app.get('/weiXinFeedbackManagement/list',weiXinFeedbackManagement.list);
+    app.post('/weiXinFeedbackManagement/update/:feedbackID',weiXinFeedbackManagement.update);//post data: msgType
+
 
    //alipay
     //alipay for web

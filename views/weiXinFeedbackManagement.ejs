@@ -13,9 +13,6 @@
         .modal-dialog{
             width: 800px;/* your width */
         }
-        .productInfoBody{
-            border-bottom: 1px dashed #dcdcdc;
-        }
     </style>
 </head>
 <body>
@@ -27,48 +24,24 @@
 
 <div class="page-container">
     <div class="row">
-
         <%include modules%>
         <div class="col-md-10">
             <div class="col-md-12">
                 <form class="form-horizontal" role="form" method="GET" id="queryForm">
                     <div class="form-group">
-                        <label class="control-label col-md-1" for="orderID">订单号：</label>
+                        <label class="control-label col-md-1" for="orderID">维权状态：</label>
                         <div class="col-md-2">
-                          <input type="text" value="" id="orderID" name="orderID" class="form-control">
-                        </div>
-                        <label class="control-label col-md-1" for="mobile">会员手机：</label>
-                        <div class="col-md-2">
-                            <input type="text" id="mobile" name="mobile" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-1" for="liveName">联系人姓名：</label>
-                        <div class="col-md-2">
-                            <input type="text" value="" id="liveName" name="liveName" class="form-control">
-                        </div>
-                        <label class="control-label col-md-1" for="contactPhone">联系人手机：</label>
-                        <div class="col-md-2">
-                            <input type="text" id="contactPhone" name="contactPhone" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-1" for="status">订单状态：</label>
-                        <div class="col-md-2">
-                            <select id="status" name="status" class="form-control" >
-                                <option value="1">已支付</option>
-                                <option value="0">未支付</option>
-                                <option value="2">已确认</option>
-                                <option value="3">已取消</option>
-                                <option value="4">已退款</option>
-                                <option value="">全部</option>
+                            <select id="msgType" name="msgType" class="form-control" >
+                                <option value="request">未处理</option>
+                                <option value="dealed">我方已处理</option>
+                                <option value="confirm">用户已确认</option>
+                                <option value="reject">用户已拒绝</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-1 col-md-offset-1">
                             <button id="query" class="btn btn-danger form-control" type="submit">查询</button>
-                        </div>
-                        <div class="col-md-2">
-                            <a class="btn btn-primary form-control" href="/orderManagement/export/5368a0afe51d1c367163f33c" >已付款订单导出</a>
                         </div>
                     </div>
                 </form>
@@ -182,7 +155,7 @@
 <script src="../js/jqueryui.min.js"></script>
 <script src="../js/datepicker.language.js"></script>
 <script src="../js/underscore.min.js"></script>
-<script src="../js/common/orderManagement.js"></script>
+<script src="../js/common/weiXinFeedbackManagement.js"></script>
 <script src="../js/ejs.js"></script>
 <script src="../js/footer.js"></script>
 

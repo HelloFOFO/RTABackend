@@ -162,6 +162,9 @@ db.pro.modules.save(a);
 var a={code:'memberManagement',name:'会员资料管理',cat:'会员管理',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:74}
 db.pro.modules.save(a);
 
+var a={code:'weiXinFeedbackManagement',name:'微信维权处理',cat:'微信管理',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:91}
+db.pro.modules.save(a);
+
 
 
 
@@ -221,6 +224,17 @@ var a = {"_id" : ObjectId("5343758fd8d3efb068465b32"),image:[],firstLetter:"j","
 db.cities.save(a);
 
 
+var a = {"_id" : ObjectId("537313bd573f6bf5bf46877c"),image:[],firstLetter:"y","pinyin":'yuyao',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'余姚',order:1,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537313be573f6bf5bf46877d"),image:[],firstLetter:"z","pinyin":'zhenhai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'镇海',order:1,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537313bf573f6bf5bf46877e"),image:[],firstLetter:"x","pinyin":'xiangshan',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :' 象山',order:1,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537313bf573f6bf5bf46877f"),image:[],firstLetter:"n","pinyin":'ninghai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'宁海',order:1,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537313c0573f6bf5bf468780"),image:[],firstLetter:"s","pinyin":'shangyu',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'上虞',order:1,isHot:false}
+db.cities.save(a);
+
 
 var a = { "name" : "后台", "_id" : ObjectId("534de2d55c5cc4b51f4e189d")}
 db.sources.save(a)
@@ -232,7 +246,10 @@ var a = { "name" : "WEIXIN","_id" : ObjectId("534de2fb2bb90df41f15c7af") }
 db.sources.save(a)
 
 
-
+//图片初始化
+var c = db.cities.findOne(ObjectId("5343757bd8d3efb068465b1f"));
+c.image=[{url:"b7b43815ff17767109e8a733.jpg",intro:"镇海旅游"},{url:"70f71fb9f7f4f28ef4d19cf1.jpg",intro:"百年老外滩"},{url:"975f6a15492b20abdfc788f9.jpg",intro:"宁波三江口"},{url:"56646815b5143fd36733b149.jpg",intro:"镇海招宝山大桥"}]
+db.cities.save(c)
 
 
 db.pricelogs.find().forEach(function(p){

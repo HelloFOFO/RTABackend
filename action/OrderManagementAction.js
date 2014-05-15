@@ -165,3 +165,30 @@ exports.updateInvoice = function(req,res){
     }
 };
 
+
+exports.orderExport = function(req,res){
+    try{
+        var opt = {
+            hostname:Config.inf.host
+            ,port:Config.inf.port
+            ,method:"GET"
+            ,path:'/order/export'+'?product='+req.params.product
+        };
+        var http = new httpClient(opt);
+        http.getReq(function(err,result){
+            if(err || result.error != 0 ){
+                res.send("下载错误！");
+            }else{
+                res.set({
+                    "Content-Disposition":"attachment; filename=export.csv",
+                    "Content-Type": "application/text; charset=GBK"
+                });
+                var iconv = require('iconv-lite');
+                res.send(iconv.encode(result.data, 'GBK'));
+            }
+        });
+    }catch(e){
+                res.send("下载错误！"+ e.message);
+    }
+};
+

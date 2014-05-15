@@ -9,6 +9,8 @@ exports.inf = {
     ,projectName:'RTA后台管理--'
     ,adminMobile:'18616365242'
     ,welcome:"欢迎页"
+    ,webserverhost:process.env.WEBSERVERHOST||'localhost'
+    ,webserverport:process.env.WEBSERVERPORT||'3000'
 };
 
 exports.errorPage= {

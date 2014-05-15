@@ -26,6 +26,7 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT||"3457");
 app.set('view engine', 'ejs');
+app.enable('trust proxy');
 app.set('views', path.join(__dirname, 'views'));
 //app.use(express.favicon());
 app.use(express.bodyParser({ uploadDir : './uploads' }));

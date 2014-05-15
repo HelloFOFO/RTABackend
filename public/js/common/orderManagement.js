@@ -182,8 +182,12 @@ $(document).ready(function(){
         var status   = $('#updateOrder').attr('status');
         var orderID  = $('#updateOrder').attr('order_id');
         var opRemark = $('#modalOperatorRemark').val();
+        //更新订单状态
         updateOrder(status,orderID,opRemark);
+        //刷新列表
         refershDataSet("/"+productType+"Management/list",$('#queryForm').serialize());
+        //关闭modal
+        $('#productOrder').modal('hide');
     });
 
     $('#modalInvoiceStatus').click(function(e){
