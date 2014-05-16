@@ -128,7 +128,6 @@ exports.add = function(req,res){
         new httpClient(opt).postReq(params,function(err,response){
             res.json({error:response.error,errMsg:response.errorMsg});
         });
-
     } catch(e){
         console.error(e.message);
         res.json({error:1,errMsg: e.message});
