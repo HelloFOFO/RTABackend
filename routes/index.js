@@ -89,25 +89,6 @@ module.exports = function(app){
     //hotel price input
 //    app.get('/hotelPrice/:category',HotelPriceInputAction.viewHotelPriceInput);
     app.get('/getProductNames/:productType',HotelPriceInputAction.getProductNames);
-//    app.post('/hotelPriceInput/list',HotelPriceInputAction.getHotelPriceLogList);
-//    app.post('/hotelPriceInput/add',HotelPriceInputAction.addInputLog);
-    //ticket price input
-//    app.get('/ticketPrice/:category',TicketPriceInputAction.viewTicketPriceInput);
-//    app.post('/ticketPriceInput/list',TicketPriceInputAction.getTicketPriceLogList);
-//    app.post('/ticketPriceInput/add',TicketPriceInputAction.addInputLog);
-    //voture price input
-//    app.get('/voturePrice/:category',VoturePriceInputAction.viewVoturePriceInput);
-//    app.post('/voturePriceInput/list',VoturePriceInputAction.getVoturePriceLogList);
-//    app.post('/voturePriceInput/add',VoturePriceInputAction.addInputLog);
-    //ticketPackage price input
-//    app.get('/ticketPackagePrice/:category',TicketPackagePriceInputAction.viewTicketPackagePriceInput);
-//    app.post('/ticketPackagePriceInput/list',TicketPackagePriceInputAction.getTicketPackagePriceLogList);
-//    app.post('/ticketPackagePriceInput/add',TicketPackagePriceInputAction.addInputLog);
-
-    //package price input
-//    app.get('/packagePrice/:category',PackagePriceInputAction.init);
-//    app.post('/packagePriceInput/list',PackagePriceInputAction.list);
-//    app.post('/packagePriceInput/add',PackagePriceInputAction.add);
 
     //price audit
     app.post('/price/:productType/audit',PriceAction.update);
