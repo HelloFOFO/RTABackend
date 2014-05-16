@@ -24,7 +24,7 @@
                         <%if( data.priceData[m].days[i].price == 99999 || data.priceData[m].days[i].price ==0 ){%>
 
                         <%}else{%>
-                              <%=data.priceData[m].days[i].cost%> / <%=data.priceData[m].days[i].packagePrice%>(<%=data.priceData[m].days[i].inventory%>)
+                              <%=data.priceData[m].days[i].cost%> / <%=data.priceData[m].days[i].price%>(<%=data.priceData[m].days[i].inventory%>)
                         <%}%>
             </div>
             <!--以下判断什么时候结束行尾，在第一行和最后一行的时候比较特殊，第一行要考虑到shift  -->

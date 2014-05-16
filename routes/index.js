@@ -37,6 +37,7 @@ var orderInputAction       = require('./../action/OrderInputAction');
 var orderManagement = require('./../action/OrderManagementAction');
 var memberManagement = require("./../action/MemberManagementAction");
 var weiXinFeedbackManagement = require("./../action/WeiXinFeedbackAction");
+var PriceAction = require("./../action/PriceAction");
 
 var UserAuth = require("./../tools/UserAuth");
 
@@ -86,31 +87,51 @@ module.exports = function(app){
     app.post('/agentMemberManagement/list',AgentMemberAction.getProviderMembersList);
 
     //hotel price input
-    app.get('/hotelPrice/:category',HotelPriceInputAction.viewHotelPriceInput);
+//    app.get('/hotelPrice/:category',HotelPriceInputAction.viewHotelPriceInput);
     app.get('/getProductNames/:productType',HotelPriceInputAction.getProductNames);
-    app.post('/hotelPriceInput/list',HotelPriceInputAction.getHotelPriceLogList);
-    app.post('/hotelPriceInput/add',HotelPriceInputAction.addInputLog);
+//    app.post('/hotelPriceInput/list',HotelPriceInputAction.getHotelPriceLogList);
+//    app.post('/hotelPriceInput/add',HotelPriceInputAction.addInputLog);
     //ticket price input
-    app.get('/ticketPrice/:category',TicketPriceInputAction.viewTicketPriceInput);
-    app.post('/ticketPriceInput/list',TicketPriceInputAction.getTicketPriceLogList);
-    app.post('/ticketPriceInput/add',TicketPriceInputAction.addInputLog);
+//    app.get('/ticketPrice/:category',TicketPriceInputAction.viewTicketPriceInput);
+//    app.post('/ticketPriceInput/list',TicketPriceInputAction.getTicketPriceLogList);
+//    app.post('/ticketPriceInput/add',TicketPriceInputAction.addInputLog);
     //voture price input
-    app.get('/voturePrice/:category',VoturePriceInputAction.viewVoturePriceInput);
-    app.post('/voturePriceInput/list',VoturePriceInputAction.getVoturePriceLogList);
-    app.post('/voturePriceInput/add',VoturePriceInputAction.addInputLog);
+//    app.get('/voturePrice/:category',VoturePriceInputAction.viewVoturePriceInput);
+//    app.post('/voturePriceInput/list',VoturePriceInputAction.getVoturePriceLogList);
+//    app.post('/voturePriceInput/add',VoturePriceInputAction.addInputLog);
     //ticketPackage price input
-    app.get('/ticketPackagePrice/:category',TicketPackagePriceInputAction.viewTicketPackagePriceInput);
-    app.post('/ticketPackagePriceInput/list',TicketPackagePriceInputAction.getTicketPackagePriceLogList);
-    app.post('/ticketPackagePriceInput/add',TicketPackagePriceInputAction.addInputLog);
+//    app.get('/ticketPackagePrice/:category',TicketPackagePriceInputAction.viewTicketPackagePriceInput);
+//    app.post('/ticketPackagePriceInput/list',TicketPackagePriceInputAction.getTicketPackagePriceLogList);
+//    app.post('/ticketPackagePriceInput/add',TicketPackagePriceInputAction.addInputLog);
 
     //package price input
-    app.get('/packagePrice/:category',PackagePriceInputAction.init);
-    app.post('/packagePriceInput/list',PackagePriceInputAction.list);
-    app.post('/packagePriceInput/add',PackagePriceInputAction.add);
-
+//    app.get('/packagePrice/:category',PackagePriceInputAction.init);
+//    app.post('/packagePriceInput/list',PackagePriceInputAction.list);
+//    app.post('/packagePriceInput/add',PackagePriceInputAction.add);
 
     //price audit
-    app.post('/priceAudit/:type',PriceAuditAction.updateStatus);
+    app.post('/price/:productType/audit',PriceAction.update);
+    //price add
+    app.post('/price/:productType/add',PriceAction.add);
+    //price list
+    app.post('/price/:productType/list',PriceAction.list);
+    //price input init audit or list
+    app.get('/priceInit/:productType/:category',PriceAction.init);
+    /*
+    *  /price/ticket/input
+    *  /price/ticket/audit
+    *  /price/ticketPackage/input
+    *  /price/ticketPackage/audit
+    *  /price/package/input
+    *  /price/package/audit
+    *  /price/hotel/input
+    *  /price/hotel/audit
+    *  /price/voture/input
+    *  /price/voture/audit
+    * */
+
+
+
     //file upload
     app.post('/file-upload', FileUploadAction.fileUpload);
     //ticketManagement
@@ -133,7 +154,7 @@ module.exports = function(app){
     app.get('/votureManagement/list',votureManagementAction.list);
     //ticketPackageManagement
     app.get('/ticketPackageManagement',ticketPackageManagementAction.init);
-    app.post('/ticketPackageManagement/add',ticketPackageManagementAction.add);
+//    app.post('/ticketPackageManagement/add',ticketPackageManagementAction.add);
     app.post('/ticketPackageManagement/update/:id',ticketPackageManagementAction.update);
     app.get('/ticketPackageManagement/detail/:id',ticketPackageManagementAction.viewDetail);
     app.get('/ticketPackageManagement/list',ticketPackageManagementAction.list);
@@ -205,6 +226,7 @@ module.exports = function(app){
     app.get('/alipay/callback/:id',AlipayWebAction.callBack);
 
     app.all('*',function(req,res){
+        console.error("404 not found!",req.url);
         res.redirect('/errorPage');
     });
 

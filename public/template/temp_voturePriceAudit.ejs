@@ -1,5 +1,5 @@
 <%data.forEach(function(obj){%>
-<tr id="<%=obj.product._id%>">
+<tr id="<%=obj.product._id%>" logID="<%=obj._id%>">
     <td><%=obj.product.name%></td>
     <td><%=new Date(obj.startDate).Format("yyyy-MM-dd")%></td>
     <td><%=new Date(obj.endDate).Format("yyyy-MM-dd")%></td>
@@ -56,10 +56,10 @@
     <!--返回状态说明:(1新录入 2 已通过  0已拒绝 3 已禁用) 这里注意一下如果返回的状态是1，则给出2 0两个按钮，
     如果返回状态是2，则给出3按钮，如果返回状态是0,3，则不给出任何按钮-->
     <%if(1===obj.status){%>
-    <td><button type="button" class="btn btn-primary" onclick="passAudit('<%=obj._id%>');">通过</button><br>
-        <button type="button" class="btn btn-danger" onclick="refuseAudit('<%=obj._id%>');">拒绝</button></td>
+    <td><button type="button" class="btn btn-primary" >通过</button><br>
+        <button type="button" class="btn btn-danger">拒绝</button></td>
     <%}else if(2===obj.status){%>
-    <td><button type="button" class="btn btn-danger" onclick="disableAudit('<%=obj._id%>');">禁用</button></td>
+    <td><button type="button" class="btn btn-danger">禁用</button></td>
     <%}%>
 </tr>
 <%});%>

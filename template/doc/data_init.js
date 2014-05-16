@@ -137,6 +137,18 @@ db.pro.modules.save(a);
 var a={code:'packagePrice/audit',name:'打包产品价格审核',cat:'价格审核',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:35}
 db.pro.modules.save(a);
 
+db.pro.modules.update({code:'ticketPrice/input'},{$set:{code:'priceInit/ticket/input'}});
+db.pro.modules.update({code:'ticketPackagePrice/input'},{$set:{code:'priceInit/ticketPackage/input'}});
+db.pro.modules.update({code:'hotelPrice/input'},{$set:{code:'priceInit/hotel/input'}});
+db.pro.modules.update({code:'voturePrice/input'},{$set:{code:'priceInit/voture/input'}});
+db.pro.modules.update({code:'packagePrice/input'},{$set:{code:'priceInit/package/input'}});
+
+db.pro.modules.update({code:'ticketPrice/audit'},{$set:{code:'priceInit/ticket/audit'}});
+db.pro.modules.update({code:'ticketPackagePrice/audit'},{$set:{code:'priceInit/ticketPackage/audit'}});
+db.pro.modules.update({code:'hotelPrice/audit'},{$set:{code:'priceInit/hotel/audit'}});
+db.pro.modules.update({code:'voturePrice/audit'},{$set:{code:'priceInit/voture/audit'}});
+db.pro.modules.update({code:'packagePrice/audit'},{$set:{code:'priceInit/package/audit'}});
+
 //var a={code:'ticketPriceQuery',name:'门票价格查询',cat:'价格查询',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:41}
 //db.pro.modules.save(a);
 //var a={code:'ticketPackagePriceQuery',name:'套票价格查询',cat:'价格查询',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:42}

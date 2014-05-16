@@ -6,11 +6,11 @@
     <meta content="" name="description" />
     <meta content="wucho" name="author" />
     <title><%=proName%>-<%=modName%></title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/bootstrap-switch.css" rel="stylesheet">
-    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="../css/ui-lightness/jqueryui.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-switch.css" rel="stylesheet">
+    <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="/css/ui-lightness/jqueryui.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
 
@@ -128,71 +128,7 @@
                         <!--所有价格显示按照周中/周末形式显示，如果周中价格==周末价格 则仅显示一个价格-->
                         <!--如果是大库存，仅显示 inventory,并用(总库存)标注， 如果是小库存，则显示周中/周末库存  ，如果周中价格==周末价格 则仅显示一个库存-->
                         <tbody id="tblcontent">
-                        <%data.forEach(function(obj){%>
-                        <tr id="<%=obj.product._id%>">
-                            <td><%=obj.product.name%></td>
-                            <td><%=new Date(obj.startDate).Format("yyyy-MM-dd")%></td>
-                            <td><%=new Date(obj.endDate).Format("yyyy-MM-dd")%></td>
-                            <td>
-                                <%if(obj.cost===obj.costWeekend){%>
-                                底价:<%=obj.cost%>
-                                <%}else{%>
-                                底价:<%=obj.cost%>/<%=obj.costWeekend%>
-                                <%}%>
-                                </br>
-                                <%if(obj.price===obj.priceWeekend){%>
-                                卖价:<%=obj.price%>
-                                <%}else{%>
-                                卖价:<%=obj.price%>/<%=obj.priceWeekend%>
-                                <%}%>
-                                </br>
-                                <%if(obj.marketPrice===obj.marketPriceWeekend){%>
-                                市场价:<%=obj.marketPrice%>
-                                <%}else{%>
-                                市场价:<%=obj.marketPrice%>/<%=obj.marketPriceWeekend%>
-                                <%}%>
-                                </br>
-                                <%if(obj.packagePrice===obj.packagePriceWeekend){%>
-                                打包价:<%=obj.packagePrice%>
-                                <%}else{%>
-                                打包价:<%=obj.packagePrice%>/<%=obj.packagePriceWeekend%>
-                                <%}%>
-                                </br>
-                                <%if(obj.inventoryType===1){%>
-                                库存: (<%=obj.inventory%>)
-                                <%}else{%>
-                                <%if(obj.inventory===obj.inventoryWeekend){%>
-                                库存: <%=obj.inventory%>
-                                <%}else{%>
-                                库存: <%=obj.inventory%>/<%=obj.inventoryWeekend%>
-                                <%}%>
-                                <%}%>
-                            </td>
-                            <td><%=obj.weekend%></td>
-                            <td><%=obj.operator?obj.operator.name:""%></td>
-                            <%if(0===obj.status){ %>
-                            <td>已拒绝</td>
-                            <%}else if(1===obj.status){%>
-                            <td>新录入</td>
-                            <%}else if(2===obj.status){%>
-                            <td>已通过</td>
-                            <%}else if(3===obj.status){%>
-                            <td>已禁用</td>
-                            <%}else{%>
-                            <td></td>
-                            <%}%>
-                            <td><%=new Date(obj.createTime).Format("yyyy-MM-dd")%></td>
-                            <td><%=obj.auditor?obj.auditor.name:""%></td>
-                            <!--返回状态说明:(1新录入 2 已通过  0已拒绝 3 已禁用) 这里注意一下如果返回的状态是1，则给出2 0两个按钮，
-                            如果返回状态是2，则给出3按钮，如果返回状态是0,3，则不给出任何按钮-->
-                            <%if(1===obj.status){%>
-                               <td><button type="button" class="btn btn-primary" onclick="passAudit('<%=obj._id%>');">通过</button><br>
-                                <button type="button" class="btn btn-danger" onclick="refuseAudit('<%=obj._id%>');">拒绝</button></td>
-                            <%}else if(2===obj.status){%>
-                                <td><button type="button" class="btn btn-danger" onclick="disableAudit('<%=obj._id%>');">禁用</button></td>
-                            <%}%>
-                        </tr>
-                        <%});%>
+
                         </tbody>
                     </table>
                 </div>
@@ -209,47 +145,24 @@
 
 
 
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-switch.js"></script>
-<script src="../js/bootstrap-paginator.min.js"></script>
-<script src="../js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-<script src="../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-<script src="../js/jqueryui.min.js"></script>
-<script src="../js/common/hotelPriceAudit.js"></script>
-<script src="../js/footer.js"></script>
-<script src="../js/ejs.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-switch.js"></script>
+<script src="/js/bootstrap-paginator.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script src="/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="/js/jqueryui.min.js"></script>
+<script src="/js/common/priceAudit.js"></script>
+<script src="/js/footer.js"></script>
+<script src="/js/ejs.js"></script>
 
 
 <script>
     $(document).ready(function() {
-        $('#isEnable').bootstrapSwitch();
+        var priceAudit = PriceAudit();
+        priceAudit.init('hotel');
     } );
-    var nowTime = new Date();
-    //search start Date
-    $('#searchStartDate').datetimepicker({
-        language:'zh-CN',
-        weekStart: 0,
-        todayBtn:  0,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-    //search end Date
-    $('#searchEndDate').datetimepicker({
-        language:'zh-CN',
-        weekStart: 0,
-        todayBtn:  0,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-    //set paginator
-    refreshPaginator(<%=currentPage%>,<%=totalPage%>);
+
 </script>
 
 </html>
