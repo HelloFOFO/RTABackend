@@ -28,6 +28,7 @@ app.set('port', process.env.PORT||"3457");
 app.set('view engine', 'ejs');
 app.enable('trust proxy');
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.favicon());
 app.use(express.bodyParser({ uploadDir : './uploads' }));
 
@@ -43,9 +44,6 @@ app.use(log4js.connectLogger(logger, {
     level : log4js.levels.INFO
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(express.logger('dev'));
 
 index(app);
 
