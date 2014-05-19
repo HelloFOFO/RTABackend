@@ -255,13 +255,15 @@ var PriceInput = function(){
                     bootstrapMajorVersion:3,
                     currentPage:currentPage,
                     totalPages:totalPage,
-                    size:"normal",
-                    alignment:"left",
+//                    size:"normal",
+//                    alignment:"left",
+//                    numberOfPages:10,
                     onPageClicked:function(event, originalEvent, type, page){
-
+                        console.debug('i am called with page:%s',page);
                         refreshTable(page);
                     }
                 };
+                console.debug('i am called with current page:%s,total page:%s',currentPage,totalPage);
                 $('#pageDiv').bootstrapPaginator(opt);
             };
 
@@ -277,8 +279,8 @@ var PriceInput = function(){
                     success: function(data, textStatus){
                         var html = new EJS({url:"/template/temp_"+productType+"PriceInput.ejs"}).render(data);
                         $('#tblcontent').html(html);
-                        console.debug("currentPage is %s,currentPage is %s",currentPage,data.totalPage);
-                        refreshPaginator(data.currentPage,data.totalPage);
+                        console.debug("currentPage is %s,totalPage is %s",currentPage,data.totalPage);
+                        refreshPaginator(currentPage,data.totalPage);
                     },
                     complete: function(XMLHttpRequest, textStatus){
                         //HideLoading();
