@@ -261,8 +261,11 @@ db.sources.save(a)
 //图片初始化
 var c = db.cities.findOne(ObjectId("5343757bd8d3efb068465b1f"));
 c.image=[{url:"b7b43815ff17767109e8a733.jpg",intro:"镇海旅游"},{url:"70f71fb9f7f4f28ef4d19cf1.jpg",intro:"百年老外滩"},{url:"975f6a15492b20abdfc788f9.jpg",intro:"宁波三江口"},{url:"56646815b5143fd36733b149.jpg",intro:"镇海招宝山大桥"}]
-db.cities.save(c)
+db.cities.save(c);
 
+var c = db.cities.findOne({name:'海宁'});
+c.image=[{"url":"4004a31eda9fb792b497e314.jpg","intro":"海宁潮"},{"url":"35bd435dc2401f911376eab0.jpg","intro":"海宁一线潮"},{"url":"ec4398d1bd1579b0a018a403.jpg","intro":"皮革城"},{"url":"a4ebce25e873d5aca6d30585.jpg","intro":"盐官古城"},{"url":"c747c3b423d9fcf9447711b2.jpg","intro":"自驾游车辆在海宁皮革城广场拼字"}];
+db.cities.save(c);
 
 db.pricelogs.find().forEach(function(p){
    if(!p.product){
