@@ -240,7 +240,7 @@ var a = {"_id" : ObjectId("537313bd573f6bf5bf46877c"),image:[],firstLetter:"y","
 db.cities.save(a);
 var a = {"_id" : ObjectId("537313be573f6bf5bf46877d"),image:[],firstLetter:"z","pinyin":'zhenhai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'镇海',order:1,isHot:false}
 db.cities.save(a);
-var a = {"_id" : ObjectId("537313bf573f6bf5bf46877e"),image:[],firstLetter:"x","pinyin":'xiangshan',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :' 象山',order:1,isHot:false}
+var a = {"_id" : ObjectId("537313bf573f6bf5bf46877e"),image:[],firstLetter:"x","pinyin":'xiangshan',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'象山',order:1,isHot:false}
 db.cities.save(a);
 var a = {"_id" : ObjectId("537313bf573f6bf5bf46877f"),image:[],firstLetter:"n","pinyin":'ninghai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'宁海',order:1,isHot:false}
 db.cities.save(a);
