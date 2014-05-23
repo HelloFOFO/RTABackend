@@ -135,7 +135,7 @@ module.exports = function(app){
     app.get('/votureManagement/list',votureManagementAction.list);
     //ticketPackageManagement
     app.get('/ticketPackageManagement',ticketPackageManagementAction.init);
-//    app.post('/ticketPackageManagement/add',ticketPackageManagementAction.add);
+    app.post('/ticketPackageManagement/add',ticketPackageManagementAction.add);
     app.post('/ticketPackageManagement/update/:id',ticketPackageManagementAction.update);
     app.get('/ticketPackageManagement/detail/:id',ticketPackageManagementAction.viewDetail);
     app.get('/ticketPackageManagement/list',ticketPackageManagementAction.list);
