@@ -190,66 +190,68 @@ var a ={ "_id" : ObjectId("53217589af7d5b633f3361cf"), "isEnable" : true, "name"
 db.provinces.insert(a);
 
 
-var a = {"_id" : ObjectId("5343757bd8d3efb068465b1f"),image:[],firstLetter:"n","pinyin":'ningbo',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'宁波',order:1,isHot:true}
+var a = {"_id" : ObjectId("5343757bd8d3efb068465b1f"),image:[],firstLetter:"n","pinyin":'ningbo',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : false, "name" :'宁波',order:100,isHot:false}
 db.cities.save(a);
-var a = {"_id" : ObjectId("5343757bd8d3efb068465b20"),image:[],firstLetter:"h","pinyin":'huzhou',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'湖州',order:1,isHot:true}
+var a = {"_id" : ObjectId("5343757bd8d3efb068465b20"),image:[],firstLetter:"h","pinyin":'huzhou',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : false, "name" :'湖州',order:110,isHot:false}
 db.cities.save(a);
-var a = {"_id" : ObjectId("5343757bd8d3efb068465b21"),image:[],firstLetter:"a","pinyin":'anji',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'安吉',order:1,isHot:true}
+var a = {"_id" : ObjectId("5343757bd8d3efb068465b21"),image:[],firstLetter:"a","pinyin":'anji',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : false, "name" :'安吉',order:120,isHot:false}
 db.cities.save(a);
-var a = {"_id" : ObjectId("5343757bd8d3efb068465b22"),image:[],firstLetter:"n","pinyin":'nanxun',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'南浔',order:1,isHot:false}
+var a = {"_id" : ObjectId("5343757bd8d3efb068465b22"),image:[],firstLetter:"n","pinyin":'nanxun',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : false, "name" :'南浔',order:130,isHot:false}
 db.cities.save(a);
-var a = {"_id" : ObjectId("5343757cd8d3efb068465b23"),image:[],firstLetter:"h","pinyin":'haining',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'海宁',order:1,isHot:false}
+
+
+var a = {"_id" : ObjectId("537313bd573f6bf5bf46877c"),image:[],firstLetter:"y","pinyin":'yuyao',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'余姚',order:160,isHot:true}
 db.cities.save(a);
-var a = {"_id" : ObjectId("537f0b27f8a93ae912a041fc"),image:[],firstLetter:"z","pinyin":'zhuji',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'诸暨',order:1,isHot:false}
+var a = {"_id" : ObjectId("537313be573f6bf5bf46877d"),image:[],firstLetter:"z","pinyin":'zhenhai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'镇海',order:170,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537313bf573f6bf5bf46877e"),image:[],firstLetter:"x","pinyin":'xiangshan',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'象山',order:180,isHot:true}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537313bf573f6bf5bf46877f"),image:[],firstLetter:"n","pinyin":'ninghai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'宁海',order:190,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537f0b27f8a93ae912a041fc"),image:[],firstLetter:"z","pinyin":'zhuji',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'诸暨',order:200,isHot:true}
+db.cities.save(a);
+var a = {"_id" : ObjectId("537313c0573f6bf5bf468780"),image:[],firstLetter:"s","pinyin":'shangyu',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'上虞',order:210,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5343757cd8d3efb068465b23"),image:[],firstLetter:"h","pinyin":'haining',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'海宁',order:220,isHot:false}
+db.cities.save(a);
+
+
+var a = {"_id" : ObjectId("53437589d8d3efb068465b29"),image:[],firstLetter:"s","pinyin":'suzhou',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" :'苏州',order:300,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("53437589d8d3efb068465b2a"),image:[],firstLetter:"k","pinyin":'kunshan',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : false, "name" :'昆山',order:310,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("53437589d8d3efb068465b2b"),image:[],firstLetter:"n","pinyin":'nantong',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : false, "name" :'南通',order:320,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("53437589d8d3efb068465b2c"),image:[],firstLetter:"h","pinyin":'haimen',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" :'海门',order:330,isHot:true}
+db.cities.save(a);
+
+var a = {"_id" : ObjectId("53437583d8d3efb068465b24"),image:[],firstLetter:"m","pinyin":'maanshan',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : true, "name" :'马鞍山',order:500,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("53437583d8d3efb068465b25"),image:[],firstLetter:"c","pinyin":'chuzhou',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : true, "name" :'滁州',order:510,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("53437583d8d3efb068465b26"),image:[],firstLetter:"x","pinyin":'xuancheng',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : false, "name" :'宣城',order:520,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("53437583d8d3efb068465b27"),image:[],firstLetter:"n","pinyin":'ningguo',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : false, "name" :'宁国',order:530,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("53437584d8d3efb068465b28"),image:[],firstLetter:"l","pinyin":'lingbi',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : false, "name" :'灵璧',order:540,isHot:false}
+db.cities.save(a);
+
+
+var a = {"_id" : ObjectId("5343758fd8d3efb068465b2d"),image:[],firstLetter:"s","pinyin":'shanghai',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : false, "name" : '上海',order:1000,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5343758fd8d3efb068465b2e"),image:[],firstLetter:"s","pinyin":'songjiang',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '松江',order:1010,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5343758fd8d3efb068465b2f"),image:[],firstLetter:"q","pinyin":'qingpu',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '青浦',order:1020,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5343758fd8d3efb068465b30"),image:[],firstLetter:"j","pinyin":'jinshan',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '金山',order:1030,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5343758fd8d3efb068465b31"),image:[],firstLetter:"c","pinyin":'chongming',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '崇明',order:1040,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5343758fd8d3efb068465b32"),image:[],firstLetter:"j","pinyin":'jiading',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : false, "name" : '嘉定',order:1050,isHot:false}
 db.cities.save(a);
 
 
 
-
-var a = {"_id" : ObjectId("53437583d8d3efb068465b24"),image:[],firstLetter:"m","pinyin":'maanshan',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : true, "name" :'马鞍山',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("53437583d8d3efb068465b25"),image:[],firstLetter:"c","pinyin":'chuzhou',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : true, "name" :'滁州',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("53437583d8d3efb068465b26"),image:[],firstLetter:"x","pinyin":'xuancheng',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : true, "name" :'宣城',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("53437583d8d3efb068465b27"),image:[],firstLetter:"n","pinyin":'ningguo',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : true, "name" :'宁国',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("53437584d8d3efb068465b28"),image:[],firstLetter:"l","pinyin":'lingbi',"province" : ObjectId("53217588af7d5b633f3361ce"), "isEnable" : true, "name" :'灵璧',order:1,isHot:false}
-db.cities.save(a);
-
-var a = {"_id" : ObjectId("53437589d8d3efb068465b29"),image:[],firstLetter:"s","pinyin":'suzhou',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" :'苏州',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("53437589d8d3efb068465b2a"),image:[],firstLetter:"k","pinyin":'kunshan',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" :'昆山',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("53437589d8d3efb068465b2b"),image:[],firstLetter:"n","pinyin":'nantong',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" :'南通',order:2,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("53437589d8d3efb068465b2c"),image:[],firstLetter:"h","pinyin":'haimen',"province" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" :'海门',order:2,isHot:false}
-db.cities.save(a);
-
-var a = {"_id" : ObjectId("5343758fd8d3efb068465b2d"),image:[],firstLetter:"s","pinyin":'shanghai',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '上海',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("5343758fd8d3efb068465b2e"),image:[],firstLetter:"s","pinyin":'songjiang',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '松江',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("5343758fd8d3efb068465b2f"),image:[],firstLetter:"q","pinyin":'qingpu',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '青浦',order:2,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("5343758fd8d3efb068465b30"),image:[],firstLetter:"j","pinyin":'jinshan',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '金山',order:3,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("5343758fd8d3efb068465b31"),image:[],firstLetter:"c","pinyin":'chongming',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '崇明',order:4,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("5343758fd8d3efb068465b32"),image:[],firstLetter:"j","pinyin":'jiading',"province" : ObjectId("53217589af7d5b633f3361cf"),"isEnable" : true, "name" : '嘉定',order:5,isHot:false}
-db.cities.save(a);
-
-
-var a = {"_id" : ObjectId("537313bd573f6bf5bf46877c"),image:[],firstLetter:"y","pinyin":'yuyao',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'余姚',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("537313be573f6bf5bf46877d"),image:[],firstLetter:"z","pinyin":'zhenhai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'镇海',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("537313bf573f6bf5bf46877e"),image:[],firstLetter:"x","pinyin":'xiangshan',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'象山',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("537313bf573f6bf5bf46877f"),image:[],firstLetter:"n","pinyin":'ninghai',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'宁海',order:1,isHot:false}
-db.cities.save(a);
-var a = {"_id" : ObjectId("537313c0573f6bf5bf468780"),image:[],firstLetter:"s","pinyin":'shangyu',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'上虞',order:1,isHot:false}
-db.cities.save(a);
 
 
 var a = { "name" : "后台", "_id" : ObjectId("534de2d55c5cc4b51f4e189d")}

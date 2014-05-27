@@ -2,6 +2,8 @@
 /*
  * GET home page.
  */
+var httpRequest = require('request');
+var config = require('./../tools/Config.js');
 //bianbian Part
 var ProviderAction = require('./../action/ProviderAction');
 var ProviderMemberAction = require('./../action/ProviderMemberAction');
@@ -205,6 +207,11 @@ module.exports = function(app){
     app.get('/alipay/reqTrade/:_id/:oid',AlipayWebAction.getReqTrade);
     app.post('/alipay/notify/:id',AlipayWebAction.notify);
     app.get('/alipay/callback/:id',AlipayWebAction.callBack);
+
+    //refresh static productList
+    app.get('/refreshStaticList',function(req,res){
+        httpRequest.get('http://'+config.inf.host+':'+config.inf.port+'/staticList').pipe(res);
+    });
 
     app.all('*',function(req,res){
         console.error("404 not found!",req.url);

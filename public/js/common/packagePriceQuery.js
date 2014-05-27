@@ -62,4 +62,8 @@ $(document).ready(function(){
     }).focus(function(){
             $(this).autocomplete("search", "");
         });
+
+    $('#queryResult').on('click','',function(){
+
+    });
 });
