@@ -13,21 +13,25 @@ HttpClient.prototype.getReq = function(cb) {
 	var req = http.request(this.options, function(res) {
 //		equal(200, res.statusCode);
 		res.setEncoding('utf8');
-		var _data="";
+		var _data;
 		res.on('data', function(chunk) {
-			_data+=chunk;
+            if(!_data){
+                _data = new Buffer(chunk);
+            } else {
+                _data+=chunk;
+            }
 		});
 		
 		res.on('end',function(){
-//            cb(null,JSON.parse(_data));
-            var data={};
-            try{
-                data=JSON.parse(_data);
-                cb(null,JSON.parse(_data));
-            }catch(e){
-                data={error:1111111,errorMsg:_data.toString()+ e.message};
-                cb(null,data);
-            }
+            cb(null,JSON.parse(_data));
+//            var data={};
+//            try{
+//                data=JSON.parse(_data.toString());
+//                cb(null,data);
+//            }catch(e){
+//                data={error:1111111,errorMsg:_data.toString()+ e.message};
+//                cb(null,data);
+//            }
 		});
 	});
 	req.on('error', function(e) {

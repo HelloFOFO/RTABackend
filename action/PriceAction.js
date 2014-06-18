@@ -232,3 +232,37 @@ exports.update = function(req,res){
     }
 };
 
+exports.updatePrice = function(req,res){
+    try{
+        var opt = {
+             hostname:config.inf.host
+            ,method:"POST"
+            ,port:config.inf.port
+            ,path:"/product/hotel/price/update/"+req.params.priceID
+        };
+        var data = {
+            oldCost:req.body.oldCost,
+            cost:req.body.cost,
+            oldPrice:req.body.oldPrice,
+            price:req.body.price,
+            oldInventory:req.body.oldInventory,
+            inventory:req.body.inventory,
+            packagePrice:0,
+            oldPackagePrice:0,
+            marketPrice:0,
+            newMarketPrice:0
+        };
+        var http = new httpClient(opt);
+        http.postReq(data,function(error,result){
+            if(error || result.error != 0 ){
+                console.error(result);
+                res.json(result);
+            }else{
+                res.json(result);
+            }
+        });
+    }catch(e){
+
+    }
+};
+

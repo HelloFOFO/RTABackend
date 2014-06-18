@@ -100,6 +100,8 @@ module.exports = function(app){
     app.post('/price/:productType/list',PriceAction.list);
     //price input init audit or list
     app.get('/priceInit/:productType/:category',PriceAction.init);
+
+    app.post('/price/update/:priceID',PriceAction.updatePrice);
     /*
     *  /price/ticket/input
     *  /price/ticket/audit

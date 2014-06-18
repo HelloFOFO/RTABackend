@@ -285,3 +285,40 @@ db.pricelogs.find().forEach(function(p){
 });
 
 
+
+
+var a = {
+    "_id" : ObjectId("5396aa513657776675013856"),
+    "__v" : 0,
+    "code" : "1235654",
+    "effectDate" : 1402382929855,
+    "expiryDate" : 1402558293396,
+    "member" : ObjectId("53840b4e8cd2f52e1bc65571"),
+    "minValue" : 0,
+    "name" : "50元优惠券",
+    "product" : [ ],
+    "status" : 0,
+    "type" : 0,
+    "value" : 50
+}
+
+db.coupons.save(a)
+
+
+var a = {
+    "__v" : 0,
+    "code" : "111111",
+    "effectDate" : 1402382929855,
+    "expiryDate" : 1402558293396,
+    "member" : ObjectId("5365d83f0cae76019c9b8ca7"),
+    "minValue" : 0,
+    "name" : "50元优惠券",
+    "product" : [ ],
+    "status" : 0,
+    "type" : 0,
+    "value" : 50
+};
+db.coupons.save(a)
+
+db.coupons.update({},{$set:{status:1}},false,true)
+db.coupons.update({},{$set:{status:0}},false,true)

@@ -74,6 +74,55 @@
 
          </div>
 </div>
+        <div class="modal fade" id="priceModify">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><span id="modalType"></span>房态修改</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" id="modalForm">
+                            <div class="form-group">
+                                <label for="title" class="col-md-2 control-label">原始底价</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" id="oldCost" readonly>
+                                </div>
+                                <label for="title" class="col-md-2 control-label">新底价</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" id="newCost" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="title" class="col-md-2 control-label">原始卖价</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" id="oldPrice" readonly>
+                                </div>
+                                <label for="title" class="col-md-2 control-label">新卖价</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" id="newPrice" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="title" class="col-md-2 control-label">原始库存</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" id="oldInventory" readonly>
+                                </div>
+                                <label for="title" class="col-md-2 control-label">新库存</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" id="newInventory" >
+                                </div>
+                            </div>
+                        </form>
+                        <input type="hidden" value="" id="priceID">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" id="doCreate">保存</button>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
 </body>
 
@@ -86,14 +135,14 @@
 <script src="../js/datepicker.language.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/ejs.js"></script>
-<script src="../js/common/hotelPriceQuery.js"></script>
+<script src="../js/common/packagePriceQuery.js"></script>
 <script src="../js/footer.js"></script>
 
 
 
 <script>
     $(document).ready(function() {
-
+        priceQueryInit.init('hotel');
     } );
 </script>
 

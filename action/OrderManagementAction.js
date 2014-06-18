@@ -82,7 +82,14 @@ exports.list = function(req,res){
             if(error){
                 res.json({error:1,errorMsg:error});
             }else{
-                data.data.forEach(function(d){
+
+//                data.data.forEach(function(d)
+                var returnData = data.data;
+//                console.log(returnData ,'aaaaaaa');
+//                console.log(returnData);
+                _.each(returnData,function(d){
+//                for(var i=0;i<returnData.length;i++){
+//                    var d = returnData[i];
                     //ticket and ticketPackage
                     if(d.product.type==1 || d.product.type==5 ){
                         var startDate = d.subOrder[0].price.startDate;

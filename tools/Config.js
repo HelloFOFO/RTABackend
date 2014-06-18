@@ -3,7 +3,7 @@
  */
 
 exports.inf = {
-     host:process.env.APISERVER||'172.16.0.15'
+     host:process.env.APISERVER||'localhost'
     ,port:process.env.APIPORT||3333
     ,pageSize:10
     ,projectName:'RTA后台管理--'
