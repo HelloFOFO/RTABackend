@@ -16,15 +16,17 @@
     <div class="row">
         <%  } %>
         <%if( i == 0) { %>
-        <div class="col-md-1 priceData col-md-offset-<%=data.priceData[m].shift%>" id="<%=data.priceData[m].days[i]._id%>" oldPrice="<%=data.priceData[m].days[i].price%>" oldCost="<%=data.priceData[m].days[i].cost%>" oldInventory="<%=data.priceData[m].days[i].inventory%>">
+        <div style="font-size: 10px;" class="col-md-1 priceData col-md-offset-<%=data.priceData[m].shift%>" id="<%=data.priceData[m].days[i]._id%>" oldPrice="<%=data.priceData[m].days[i].price%>" oldCost="<%=data.priceData[m].days[i].cost%>" oldInventory="<%=data.priceData[m].days[i].inventory%>">
             <% } else { %>
-            <div class="col-md-1 priceData" id="<%=data.priceData[m].days[i]._id%>" oldPrice="<%=data.priceData[m].days[i].price%>" oldCost="<%=data.priceData[m].days[i].cost%>" oldInventory="<%=data.priceData[m].days[i].inventory%>">
+            <div class="col-md-1 priceData" style="font-size: 10px;" id="<%=data.priceData[m].days[i]._id%>" oldPrice="<%=data.priceData[m].days[i].price%>" oldCost="<%=data.priceData[m].days[i].cost%>" oldInventory="<%=data.priceData[m].days[i].inventory%>">
                 <%}%>
                         <span><%=parseInt(i)+1%></span><br><br>
                         <%if( data.priceData[m].days[i].price == 99999 || data.priceData[m].days[i].price ==0 ){%>
 
                         <%}else{%>
-                              <%=data.priceData[m].days[i].cost%> / <%=data.priceData[m].days[i].price%>(<%=data.priceData[m].days[i].inventory%>)
+                              <span style="color: red"><%=data.priceData[m].days[i].cost%></span> <br>
+                              <span style="color: blue"><%=data.priceData[m].days[i].price%></span><br>
+                              (<%=data.priceData[m].days[i].inventory%>)
                         <%}%>
             </div>
             <!--以下判断什么时候结束行尾，在第一行和最后一行的时候比较特殊，第一行要考虑到shift  -->
