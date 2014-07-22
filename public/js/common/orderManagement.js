@@ -32,7 +32,7 @@ $(document).ready(function(){
         refershDataSet($(this).attr('href'));
     });
 
-    var getProductStr=function(city,productType,productName,useDate,price,cost){
+    var getProductStr=function(city,productType,productName,useDate,price,cost,payValue){
         var productStr =  '<div class="productInfoBody">'+
                                 '<div class="form-group">'+
                                     '<label class="col-md-3 control-label" >产品:</label>'+
@@ -151,6 +151,10 @@ $(document).ready(function(){
                 $('#modalMobile').val(data.data.contactPhone);
                 $('#modalMemberName').val(data.data.member.name);
                 $('#modalMemberMobile').val(data.data.member.mobile);
+                $('#modalTotalPrice').val(data.data.totalPrice);
+                $('#modalQuantity').val(data.data.quantity);
+                $('#modalCouponValue').val(data.data.totalPrice - parseInt(data.data.payValue?data.data.payValue:data.data.totalPrice));
+                console.log(data.data.totalPrice - parseInt(data.data.payValue?data.data.payValue:data.data.totalPrice));
 
                 if(!_.isEmpty(data.data.invoice)){
                    $('.modalInvoiceInfo').show();
