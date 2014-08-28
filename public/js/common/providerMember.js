@@ -37,7 +37,7 @@ $('#srhForm').submit(function(event){
         data:$('#srhForm').serialize(),
         success: function(data, textStatus){
             if(data.error!==0){
-                console.log(data);
+                //console.log(data);
                 alert("查询出错！");
             }else{
                 var html = new EJS({url:"./template/temp_providerMember.ejs"}).render(data);
@@ -65,12 +65,15 @@ var addProviderMember=function(){
     }else{
         url =  "/providerMember/update/"+$('#selectedId').val();
     }
+    var formData = $('#pMbrForm').serialize();
+    formData += '&isEnable=' + $('#isEnable').bootstrapSwitch('state').toString();
+
     $.ajax({
         type: "post",
         url: url,
         cache:false,
 //            dataType:"json",
-        data:$('#pMbrForm').serialize(),
+        data:formData,
         success: function(data, textStatus){
             if(data.error!==0){
                 alert("保存供应商错误："+data.errMsg);
