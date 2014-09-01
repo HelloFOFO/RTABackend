@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="wucho" name="author" />
+    <title><%=proName%>-<%=modName%></title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+<%include header%>
+<!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
+
+
+<div class="page-container">
+    <div class="row">
+
+        <%include modules%>
+
+        <div class="col-md-10">
+            <div class="row">
+                <!-- -->
+                <div class="col-md-4">
+                    <!--发送规则-->
+                    <h4>发送规则</h4>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-4"> 手机号：</label>
+                            <div class="col-md-8"> <input class="form-control" type="text" value="" name=""/> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4"> 份数：</label>
+                            <div class="col-md-8"> <input class="form-control" type="number" value="" name=""/> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!--优惠券信息-->
+                    <h4>优惠券信息</h4>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-3"> 活动名称：</label>
+                            <div class="col-md-8"> <input class="form-control" type="text" value="" name=""/> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"> 券名称：</label>
+                            <div class="col-md-8"> <input class="form-control" type="text" value="" name=""/> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"> 券类型：</label>
+                            <div class="col-md-8">
+                                <select class="form-control">
+                                    <option value="0">金额券</option>
+                                    <option value="1">折扣券</option>
+                                    <option value="3">固定价格券</option>
+                                    <option value="4">免费券</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"> 券面额：</label>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <input class="form-control" type="number" value="0" name=""/><div class="input-group-addon">元</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"> 有效期：</label>
+                            <div class="col-md-4"> <input class="form-control" type="date" value="" name=""/> </div>
+                            <div class="col-md-4"> <input class="form-control" type="date" value="" name=""/> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"> 适用订单金额：</label>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <input  class="form-control"type="number" value="0" name=""/><div class="input-group-addon">元起</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"> 适用商品：</label>
+                            <div class="col-md-8"> <textarea  class="form-control" rows="3"> </textarea> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1 col-md-offset-4">
+                    <button class="btn btn-primary">提交</button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn">返回</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- hidden fields-->
+<input type="hidden" id="selectedId"/>
+<input type="hidden" id="tabActive"/>
+</body>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-switch.js"></script>
+<script src="/js/footer.js"></script>
+<script>
+    $(document).ready(function() {
+
+    } );
+</script>
+
+</html>

@@ -102,6 +102,10 @@ module.exports = function(app){
     app.get('/priceInit/:productType/:category',PriceAction.init);
 
     app.post('/price/update/:priceID',PriceAction.updatePrice);
+
+    app.get('/coupon/add',function(req,res){
+        res.render('couponManagement');
+    });
     /*
     *  /price/ticket/input
     *  /price/ticket/audit

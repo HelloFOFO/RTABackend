@@ -178,6 +178,8 @@ var a={code:'weiXinFeedbackManagement',name:'微信维权处理',cat:'微信管�
 db.pro.modules.save(a);
 
 
+var a={code:'coupon/add',name:'新增优惠券',cat:'优惠券',isEnable:true,createTime:1394671086295,updateTime:1394671086295,operator:ObjectId('5320ff9b6532aa00951ff5e0'),order:101}
+db.pro.modules.save(a);
 
 
 var a ={ "_id" : ObjectId("53217588af7d5b633f3361cc"), "isEnable" : true, "name" : "江苏" }
@@ -324,3 +326,34 @@ db.coupons.save(a)
 
 db.coupons.update({},{$set:{status:1}},false,true)
 db.coupons.update({},{$set:{status:0}},false,true)
+
+
+//生成coupon的代码
+
+
+for(var i=0;i<10000;i++){
+    db.couponcodes.save({code:getRandString(10),isUsed:false});
+}
+
+var getRandChar = function(){
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var charArray = chars.split('');
+    var rand = Math.round(Math.random()*10000,0);
+    var isChar = Math.round(Math.random()*10,0)>4?true:false;
+    if(isChar){
+        var pos = rand%26;
+        result = chars[pos];
+    }else{
+        var pos = rand%10;
+        result = pos.toString();
+    }
+    return result;
+}
+
+var getRandString = function(len){
+    var result = "";
+    for(var i=0;i<len;i++){
+        result += getRandChar();
+    }
+    return result;
+}
