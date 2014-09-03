@@ -106,6 +106,10 @@ module.exports = function(app){
     app.get('/coupon/add',function(req,res){
         res.render('couponManagement');
     });
+
+    app.get('/testfile',function(req,res){
+        res.render('testfileupload');
+    });
     /*
     *  /price/ticket/input
     *  /price/ticket/audit

@@ -11,7 +11,7 @@ var Conf = require("./tools/Config");
 var RedisStore = require('connect-redis')(express);
 
 var store = new RedisStore({
-            host: process.env.REDISSEVER||'172.16.0.15',
+            host: process.env.REDISSEVER||'192.168.3.2',
             port: process.env.REDISPORT||6379,
             db: 2,
             pass: process.env.REDISPASS||'rtadd885'
