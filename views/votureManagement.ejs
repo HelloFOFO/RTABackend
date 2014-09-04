@@ -135,27 +135,13 @@
             </div>
 
                 <div class="modal-body">
-                    <form enctype="multipart/form-data" id="fileuploadform" class="form-horizontal">
-                        <div class="form-group">
-                                <label for="image" class="col-md-2 control-label">图片名称</label>
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control" id="imgintro">
-                                </div>
-                                <label for="image" class="col-md-2 control-label">图片</label>
-                                <!--<span class="col-md-2 btn btn-success">-->
-                                    <!--<i class="plus"></i>-->
-                                    <!--<span>选择文件</span>-->
-                                    <!--<input type="file" name="file" id="fileupload" data-url="/file-upload">-->
-                                <!--</span>-->
-                                <div class="col-md-2">
-                                    <input type="file" name="file" id="fileupload">
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="doUpload" class="form-control btn btn-primary"> 上传 </button>
-                                </div>
-
+                    <div class="form-horizontal">
+                        <div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+                        <div id="fileUploadContainer">
+                            <a id="pickfiles" href="javascript:" class="btn btn-primary btn-sm">选择图片文件</a>
+                            <a id="uploadfiles" href="javascript:" class="btn btn-danger btn-sm">上传图片</a>
                         </div>
-                    </form>
+                    </div>
                     <!--<div class="form-group" id="imgpreview">-->
                     <from class="form-horizontal">
                         <div class="form-group">
@@ -341,6 +327,7 @@
 <script src="./js/jquery.validate.min.js"></script>
 <script src="./js/ejs.js"></script>
 <script src="./js/footer.js"></script>
+<script src="/js/plupload.full.min.js"></script>
 <script src="./js/common/votureManagement.js"></script>
 
 

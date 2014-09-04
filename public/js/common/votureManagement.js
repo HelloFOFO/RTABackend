@@ -134,27 +134,79 @@ $(document).ready(function(){
         }
     });
     //点击modal框中的图片上传
-    $('#doUpload').click(function(e){
-        e.preventDefault();
-        var formData = new FormData($('#fileuploadform')[0]);
-        var picName  = $('#imgintro').val();
-        $.ajax({
-            url: '/file-upload',  //server script to process data
-            type: 'POST',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false
-        }).done(function(data){
+//    $('#doUpload').click(function(e){
+//        e.preventDefault();
+//        var formData = new FormData($('#fileuploadform')[0]);
+//        var picName  = $('#imgintro').val();
+//        $.ajax({
+//            url: '/file-upload',  //server script to process data
+//            type: 'POST',
+//            data: formData,
+//            cache: false,
+//            contentType: false,
+//            processData: false
+//        }).done(function(data){
+//                if(data.error==0){
+//                    picName = (picName==""?data.srcFileName:picName);
+//                    addImage({intro:picName,url:data.upyunFileName,width:data.width,height:data.height});
+//                }else{
+//                    console.log("上传失败！");
+//                    alert("上传失败！");
+//                }
+//            });
+//    });
+    var uploader = new plupload.Uploader({
+        runtimes : 'html5,html4',
+        browse_button : 'pickfiles', // you can pass in id...
+        container: document.getElementById('fileUploadContainer'), // ... or DOM Element itself
+        url : '/file-upload',
+        filters : {
+            max_file_size : '10mb',
+            mime_types: [
+                {title : "Image files", extensions : "jpg,gif,png"}
+            ]
+        },
+        init: {
+            PostInit: function() {
+                document.getElementById('filelist').innerHTML = '';
+                document.getElementById('uploadfiles').onclick = function() {
+                    uploader.start();
+                    return false;
+                };
+            },
+
+            FilesAdded: function(up, files) {
+                plupload.each(files, function(file) {
+                    document.getElementById('filelist').innerHTML += '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
+                });
+            },
+
+            UploadProgress: function(up, file) {
+                document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+            },
+
+            Error: function(up, err) {
+//                document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+                console.log(err.code,err.message);
+            },
+            FileUploaded:function(a,b,response){
+                var data = JSON.parse(response.response);
                 if(data.error==0){
-                    picName = (picName==""?data.srcFileName:picName);
+                    var picName = data.srcFileName;
                     addImage({intro:picName,url:data.upyunFileName,width:data.width,height:data.height});
+//                    uploader.destroy();
+//                    uploader.init();
                 }else{
                     console.log("上传失败！");
                     alert("上传失败！");
                 }
-            });
+
+            }
+        }
     });
+    //初始化图片上传控件
+    uploader.init();
+
     //点击modal框中的删除图片按钮
     $('#imgPreview').on('click','.deleteBar',function(e){
         $(this).parent().remove();
@@ -224,6 +276,11 @@ $(document).ready(function(){
         submitHandler:function(form){
             saveProduct();
         }
+    });
+
+    //modal隐藏的时候需要把fileupload重置
+    $('#createModal').on('hide.bs.modal',function(e){
+        $('#filelist').empty();
     });
 
     // 点击分页信息的动作
