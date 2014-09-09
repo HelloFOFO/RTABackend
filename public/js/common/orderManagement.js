@@ -156,9 +156,9 @@ $(document).ready(function(){
                 $('#modalCouponValue').val(data.data.totalPrice - parseInt(data.data.payValue?data.data.payValue:data.data.totalPrice));
                 var payWay;
                 switch (data.data.payWay){
-                    case 10:payWay="支付宝";break;
-                    case 20:payWay="支付宝";break;
-                    case 30:payWay="微支付";break;
+                    case "10":payWay="支付宝";break;
+                    case "20":payWay="支付宝";break;
+                    case "30":payWay="微支付";break;
                     default :payWay="";
                 }
                 $('#modalPayWay').val(payWay);
