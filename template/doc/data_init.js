@@ -78,8 +78,27 @@ var a={
 db.ents.save(a)
 
 
-var a = { "mobile" : "18888888888", "name" : "系统", "email" : "", "tel" : "", "gender" : "", "idCard" : "", "provider" : ObjectId("5320ffb06532aa00951ff5e1"), "passwd" : "92d7ddd2a010c59511dc2905b7e14f64", "isEnable" : true, "operator" : ObjectId("5320ff9b6532aa00951ff5e0"), "_id" : ObjectId("534f9b073b4fec3f208952e0"), "signUpDate" : 1397725959101};
+
+
+var a = { "_id" : ObjectId("5407e451e11a629878d24718"),"mobile" : "18888888880", "name" : "网站支付宝", "email" : "", "tel" : "", "gender" : "", "idCard" : "", "provider" : ObjectId("533ca827857c17cc25f88f08"), "passwd" : "92d7ddd2a010c59511dc2905b7e14f64", "isEnable" : false, "operator" : ObjectId("5320ff9b6532aa00951ff5e0"), "signUpDate" : 1397725959101};
 db.members.save(a);
+
+var a = { "_id" : ObjectId("5407e453e11a629878d2471a"), "mobile" : "18888888881", "name" : "微信微支付", "email" : "", "tel" : "", "gender" : "", "idCard" : "", "provider" : ObjectId("533ca827857c17cc25f88f08"), "passwd" : "92d7ddd2a010c59511dc2905b7e14f64", "isEnable" : false, "operator" : ObjectId("5320ff9b6532aa00951ff5e0"),  "signUpDate" : 1397725959101};
+db.members.save(a);
+
+var a = { "_id" : ObjectId("5407e452e11a629878d24719"), "mobile" : "18888888882", "name" : "手机支付宝", "email" : "", "tel" : "", "gender" : "", "idCard" : "", "provider" : ObjectId("533ca827857c17cc25f88f08"), "passwd" : "92d7ddd2a010c59511dc2905b7e14f64", "isEnable" : false, "operator" : ObjectId("5320ff9b6532aa00951ff5e0"), "signUpDate" : 1397725959101};
+db.members.save(a);
+
+
+db.members.findOne({mobile:'18888888880'},{_id:1})  //{ "_id" : ObjectId("5407e451e11a629878d24718") }  网站支付宝
+db.members.findOne({mobile:'18888888882'},{_id:1})  //{ "_id" : ObjectId("5407e453e11a629878d2471a") }  手机支付宝
+db.members.findOne({mobile:'18888888881'},{_id:1})  //{ "_id" : ObjectId("5407e452e11a629878d24719") }  微信微支付
+
+
+
+
+
+
 
 
 
@@ -217,6 +236,10 @@ db.cities.save(a);
 var a = {"_id" : ObjectId("5343757cd8d3efb068465b23"),image:[],firstLetter:"h","pinyin":'haining',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'海宁',order:220,isHot:false}
 db.cities.save(a);
 var a = {"_id" : ObjectId("53c617905d97f1ae764e1d22"),image:[],firstLetter:"c","pinyin":'cixi',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'慈溪',order:230,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5407c74dd97a9be2523e683f"),image:[],firstLetter:"n","pinyin":'ningbo',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'宁波',order:240,isHot:false}
+db.cities.save(a);
+var a = {"_id" : ObjectId("5407d0d06013585d522af12e"),image:[],firstLetter:"f","pinyin":'fenghua',"province" : ObjectId("53217588af7d5b633f3361cd"), "isEnable" : true, "name" :'奉化',order:250,isHot:false}
 db.cities.save(a);
 
 
