@@ -200,7 +200,7 @@ module.exports = function(app){
     app.get('/orderManagement/list',orderManagement.list);
     app.get('/orderManagement/detail',orderManagement.detail);
     app.post('/orderManagement/invoice/update/:orderID',orderManagement.updateInvoice);
-    app.get('/orderManagement/export/:product',orderManagement.orderExport);
+    app.get('/orderManagement/export',orderManagement.orderExport);
 
     app.get('/memberManagement',memberManagement.init);
     app.get('/memberManagement/list',memberManagement.list);

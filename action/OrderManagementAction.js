@@ -179,8 +179,9 @@ exports.orderExport = function(req,res){
             hostname:Config.inf.host
             ,port:Config.inf.port
             ,method:"GET"
-            ,path:'/order/export'+'?product='+req.params.product
+            ,path:'/order/export'+'?'+querystring.stringify(req.query)
         };
+//        console.log(opt.path);
         var http = new httpClient(opt);
         http.getReq(function(err,result){
             if(err || result.error != 0 ){

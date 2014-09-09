@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var productType="order";
-
+    $('.date').datepicker();
     var resetQueryForm = function(){
        $('#queryForm').get(0).reset();
     };
@@ -244,5 +244,42 @@ $(document).ready(function(){
         e.preventDefault();
         refershDataSet("/"+productType+"Management/list",$('#queryForm').serialize());
     });
+
+   //点击订单导出
+    $('#orderExportSetting').click(function(e){
+        $('#orderExportModal').modal('show');
+        $('#exportForm').get(0).reset();
+        $('#exportProductName').data('productID','');
+        e.preventDefault();
+    });
+    //订单导出
+    $('#exportOrder').click(function(e){
+        var param = $('#exportForm').serialize();
+        param += '&productID='+ $('#exportProductName').data('productID');
+        window.location = '/orderManagement/export?'+param;
+        e.preventDefault();
+    });
+    //订单导出中的产品选择
+    $('#exportProductName').autocomplete({
+        source:function(req,res){
+            $.ajax({
+                method:'GET',
+                url:'/getProductNames/all',
+                data:{name:req.term}
+            }).done(function(data){
+                res(data);
+            });
+        }
+        ,minLength:0
+        ,appendTo:'#orderExportModal'
+        ,select:function(event,ui){
+            event.preventDefault();
+            $('#exportProductName').val(ui.item.label);
+            $('#exportProductName').data( "productID", ui.item.value );
+        }
+    }).focus(function(){
+        $(this).autocomplete("search", "");
+    });
+
 
 });
