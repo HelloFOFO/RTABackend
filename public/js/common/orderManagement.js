@@ -98,6 +98,7 @@ $(document).ready(function(){
                 var orderProductType = data.data.product.type;
                 var productStr="";
                 var isWeekend = "";
+                //判断按钮上的文字
                 if(orderStatus==1){
                     //已支付
                     $('#updateOrder').show();
@@ -111,8 +112,7 @@ $(document).ready(function(){
 
                 }else if(orderStatus==0 || orderStatus==3 || orderStatus==4){
                     //未支付 已取消  已退款
-
-                    console.log('test');
+//                    console.log('test');
                     $('#updateOrder').hide();
                 }
                 if(!(data.data.isWeekend === undefined)){
@@ -154,7 +154,15 @@ $(document).ready(function(){
                 $('#modalTotalPrice').val(data.data.totalPrice);
                 $('#modalQuantity').val(data.data.quantity);
                 $('#modalCouponValue').val(data.data.totalPrice - parseInt(data.data.payValue?data.data.payValue:data.data.totalPrice));
-                console.log(data.data.totalPrice - parseInt(data.data.payValue?data.data.payValue:data.data.totalPrice));
+                var payWay;
+                switch (data.data.payWay){
+                    case 10:payWay="支付宝";break;
+                    case 20:payWay="支付宝";break;
+                    case 30:payWay="微支付";break;
+                    default :payWay="";
+                }
+                $('#modalPayWay').val(payWay);
+//                console.log(data.data.totalPrice - parseInt(data.data.payValue?data.data.payValue:data.data.totalPrice));
 
                 if(!_.isEmpty(data.data.invoice)){
                    $('.modalInvoiceInfo').show();
