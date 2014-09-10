@@ -52,6 +52,7 @@ $(document).ready(function(){
             }).done(function(data){
                     if(data.error==0){
                         $('#modalChangePassword').modal('toggle');
+                        alert('修改密码成功！');
                     }else{
                         alert('无法修改密码,请联系管理员！');
                         console.log(data);
