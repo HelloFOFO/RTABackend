@@ -1,32 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="wucho" name="author" />
-    <title>ProjectName-moduleName</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/ui-lightness/jqueryui.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-</head>
-<body>
-<style>
-    .priceData{
-        height: 80px;
-        text-align: center;
-    }
-</style>
 <!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
 <%include header%>
 <!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
 
-<div class="page-container">
+<div class="container-fluid">
     <div class="row">
 
      <%include modules%>
 
-     <div class="col-md-10">
+     <div class="col-md-10 col-md-offset-2 main">
          <div class="row">
              <!--这一部分为查询栏-->
              <div class="col-md-12">
@@ -73,7 +54,11 @@
              <!--这一部分是分页栏 以及 表格栏-->
 
          </div>
+     </div>
+
+     </div>
 </div>
+
         <div class="modal fade" id="priceModify">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -127,17 +112,8 @@
 </body>
 
 
-
-
-
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jqueryui.min.js"></script>
-<script src="../js/datepicker.language.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/ejs.js"></script>
-<script src="../js/common/packagePriceQuery.js"></script>
-<script src="../js/footer.js"></script>
-
+<%include footer%>
+<script src="/js/common/packagePriceQuery.js"></script>
 
 
 <script>

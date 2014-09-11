@@ -42,7 +42,7 @@ $(document).ready(function(){
 
 
     $('#changePassword').click(function(e){
-        console.log($('#modalPassword1').val(),$('#modalPassword2').val());
+//        console.log($('#modalPassword1').val(),$('#modalPassword2').val());
         if($('#modalPassword1').val()==$('#modalPassword2').val()){
             var newPassword = $('#modalPassword1').val();
             $.ajax({

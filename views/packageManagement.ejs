@@ -1,33 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf8" />
-    <meta content="width=device-width ,initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="wucho" name="author" />
-    <title></title>
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/bootstrap-switch.css" rel="stylesheet">
-    <!--<link href="./css/jquery.fileupload.css" rel="stylesheet">-->
-    <link href="./css/ui-lightness/jqueryui.min.css" rel="stylesheet">
-    <link href="./css/main.css" rel="stylesheet">
-    <style>
-        #createModal .modal-dialog{
-            width:1000px;
-        }
-    </style>
-</head>
-<body>
-
 <!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
 <%include header%>
 <!--！！！！！！！！！！！！！！这个头都是一样的，可以全部进行替换！！！！！！！！！！！！！！-->
-<div class="page-container">
+<style>
+    #createModal .modal-dialog{
+        width:1000px;
+    }
+</style>
+
+<div class="container-fluid">
     <div class="row">
 
         <%include modules%>
 
-        <div class="col-md-10">
+        <div class="col-md-10 col-md-offset-2 main">
             <div class="row">
                 <!--这一部分为查询栏-->
                 <div class="col-md-12">
@@ -360,18 +345,9 @@
 </div><!-- /.modal -->
 
 
+<%include footer%>
 
-
-<script src="./js/jquery.min.js"></script>
-<script src="./js/jqueryui.min.js"></script>
-<script src="../js/datepicker.language.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/bootstrap-switch.js"></script>
-<script src="./js/footer.js"></script>
-<script src="./js/underscore.min.js"></script>
-<script src="./js/jquery.validate.min.js"></script>
-<script src="./js/ejs.js"></script>
-<script src="./js/common/packageManagement.js"></script>
+<script src="/js/common/packageManagement.js"></script>
 
 
 

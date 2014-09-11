@@ -1,4 +1,4 @@
-<div class="col-md-10">
+<div class="col-md-12">
     <%
     for(var m in data.priceData){ %>
     <div class="row"><%=data.priceData[m].yearMonth%></div>
@@ -20,7 +20,7 @@
             <% } else { %>
             <div class="col-md-1 priceData" style="font-size: 10px;" id="<%=data.priceData[m].days[i]._id%>" oldPrice="<%=data.priceData[m].days[i].price%>" oldCost="<%=data.priceData[m].days[i].cost%>" oldInventory="<%=data.priceData[m].days[i].inventory%>">
                 <%}%>
-                        <span><%=parseInt(i)+1%></span><br><br>
+                        <span><%=parseInt(i)+1%></span><br>
                         <%if( data.priceData[m].days[i].price == 99999 || data.priceData[m].days[i].price ==0 ){%>
 
                         <%}else{%>
