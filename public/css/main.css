@@ -1,5 +1,7 @@
 body{
     padding-top:50px;
+    font-family: "Microsoft YaHei" ! important;
+    font-size:12px;
 }
 
 @media (min-width: 768px) {
